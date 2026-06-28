@@ -133,6 +133,7 @@ const posts = files
     const category = frontmatter.category || "Blog";
     const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [];
     const description = frontmatter.description || "";
+    const image = frontmatter.image || "";
     const draft = String(frontmatter.draft).toLowerCase() === "true";
 
     return {
@@ -142,6 +143,7 @@ const posts = files
       category,
       tags,
       description,
+      image,
       draft,
     };
   })
@@ -183,6 +185,12 @@ function collectArchives() {
 }
 
 function generatePostCard(post) {
+  const image = post.image
+    ? `<a class="post-card-image-link" href="./posts/${encodeURIComponent(path.basename(post.file, ".md"))}">
+  <img class="post-card-image" src="${post.image}" alt="${post.title}">
+</a>`
+    : "";
+
   const tags =
     post.tags.length > 0
       ? `<div class="post-card-tags">${post.tags
@@ -195,6 +203,8 @@ function generatePostCard(post) {
     : "";
 
   return `<div class="post-card">
+
+${image}
 
 <h3>${toHtmlLink(post.file, post.title)}</h3>
 

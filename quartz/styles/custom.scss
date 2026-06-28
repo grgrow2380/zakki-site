@@ -2134,3 +2134,51 @@ article a[href*="./tags/"]:hover {
     font-size: 0.88rem;
   }
 }
+
+/* ==============================
+   Post bottom navigation
+   ============================== */
+
+.post-bottom-nav {
+  max-width: 760px;
+  margin: 3rem auto 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid rgba(120, 181, 181, 0.45);
+  text-align: center;
+}
+
+.post-bottom-nav p {
+  margin: 0 0 0.8rem;
+  color: var(--zakki-muted);
+  font-size: 0.86rem;
+}
+
+.post-bottom-nav a {
+  display: inline-block;
+  margin: 0 0.35rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  color: var(--zakki-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.post-bottom-nav a:hover {
+  background: rgba(229, 138, 58, 0.16);
+  color: #e58a3a;
+  text-decoration: none;
+}
+
+@media all and (max-width: 800px) {
+  .post-bottom-nav {
+    margin-top: 2.4rem;
+  }
+
+  .post-bottom-nav a {
+    margin-bottom: 0.4rem;
+  }
+}

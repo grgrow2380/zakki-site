@@ -51,3 +51,18 @@ title: Blog
 <div class="post-card-tags"><span>#test</span> <span>#blog</span></div>
 
 </div>
+---
+
+<div class="post-card post-card-no-image">
+
+
+
+<h3><a href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">記事内フッターテスト記事</a></h3>
+
+<div class="post-card-meta">2026-06-28 / <a href="./Blog">Blog</a></div>
+
+<p class="post-card-description">記事内のフッターにリンクが貼られるかどうかを確認するテスト。</p>
+
+<div class="post-card-tags"><span>#test</span> <span>#blog</span></div>
+
+</div>

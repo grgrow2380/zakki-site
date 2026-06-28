@@ -67,6 +67,20 @@ title: zakki
 
 </div>
 
+<div class="post-card post-card-no-image">
+
+
+
+<h3><a href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">記事内フッターテスト記事</a></h3>
+
+<div class="post-card-meta">2026-06-28 / <a href="./Blog">Blog</a></div>
+
+<p class="post-card-description">記事内のフッターにリンクが貼られるかどうかを確認するテスト。</p>
+
+<div class="post-card-tags"><span>#test</span> <span>#blog</span></div>
+
+</div>
+
 </main>
 
 <aside class="home-sidebar">
@@ -92,17 +106,17 @@ title: zakki
 <div class="sidebar-box">
 <h3>TAGS</h3>
 <div class="sidebar-tags">
-<a href="./tags/blog">#blog (2)</a>
+<a href="./tags/blog">#blog (3)</a>
 <a href="./tags/memo">#memo (1)</a>
 <a href="./tags/obsidian">#obsidian (2)</a>
-<a href="./tags/test">#test (1)</a>
+<a href="./tags/test">#test (2)</a>
 </div>
 </div>
 
 <div class="sidebar-box">
 <h3>ARCHIVE</h3>
 <ul class="sidebar-archive-list">
-<li>2026-06 (3)</li>
+<li>2026-06 (4)</li>
 </ul>
 </div>
 

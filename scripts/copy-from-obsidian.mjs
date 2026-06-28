@@ -33,6 +33,24 @@ function ensureDir(dir) {
   }
 }
 
+function isDraftMarkdown(text) {
+  const cleanText = text.replace(/^\uFEFF/, "");
+  const match = cleanText.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/);
+
+  if (!match) {
+    return false;
+  }
+
+  const yaml = match[1];
+  const draftMatch = yaml.match(/^draft:\s*(.+)$/m);
+
+  if (!draftMatch) {
+    return false;
+  }
+
+  return draftMatch[1].trim().toLowerCase() === "true";
+}
+
 function copyMarkdownFiles(sourceDir, destDir) {
   const files = fs.readdirSync(sourceDir);
 
@@ -43,6 +61,18 @@ function copyMarkdownFiles(sourceDir, destDir) {
 
     const source = path.join(sourceDir, file);
     const dest = path.join(destDir, file);
+    const text = fs.readFileSync(source, "utf8");
+
+    if (isDraftMarkdown(text)) {
+      if (fs.existsSync(dest)) {
+        fs.unlinkSync(dest);
+        console.log(`Removed draft post from public folder: ${file}`);
+      } else {
+        console.log(`Skipped draft post: ${file}`);
+      }
+
+      continue;
+    }
 
     fs.copyFileSync(source, dest);
     console.log(`Copied post: ${file}`);

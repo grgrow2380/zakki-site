@@ -872,3 +872,81 @@ article a {
     font-size: 1.15rem;
   }
 }
+
+/* ==============================
+   List pages refine
+   ============================== */
+
+/* カテゴリ・タグ・アーカイブなどの一覧ページ */
+article h1:first-child {
+  margin-bottom: 1.2rem;
+}
+
+/* 一覧ページの説明文 */
+article > p:first-of-type {
+  color: var(--darkgray);
+  line-height: 1.8;
+}
+
+/* Markdownで生成される記事一覧 */
+article ul {
+  margin-top: 1rem;
+}
+
+/* 一覧ページのリスト項目 */
+article li {
+  margin-bottom: 0.45rem;
+  line-height: 1.7;
+}
+
+/* 一覧ページ内リンク */
+article li a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+article li a:hover {
+  text-decoration: underline;
+}
+
+/* タグ一覧・サイトマップなどを少しカード風に */
+article h2 + ul,
+article h3 + ul {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--light) 88%, var(--lightgray));
+}
+
+/* Archiveページの月別見出し */
+article h2 {
+  scroll-margin-top: 2rem;
+}
+
+/* Sitemapなどの長い一覧の余白 */
+article h1 + ul,
+article p + ul {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--light) 88%, var(--lightgray));
+}
+
+/* リスト中の日付や件数が読みやすいように */
+article li {
+  color: var(--darkgray);
+}
+
+article li a {
+  color: var(--dark);
+}
+
+/* スマホ調整 */
+@media all and (max-width: 800px) {
+  article h2 + ul,
+  article h3 + ul,
+  article h1 + ul,
+  article p + ul {
+    padding: 0.85rem 1rem;
+  }
+}

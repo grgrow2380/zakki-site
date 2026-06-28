@@ -27,7 +27,7 @@ try {
     process.exit(0);
   }
 
-  run("git add content scripts package.json quartz/styles/custom.scss");
+  run("git add content scripts package.json quartz.config.yaml quartz/styles/custom.scss publish-zakki.cmd");
 
   const staged = getOutput("git diff --cached --name-only");
 

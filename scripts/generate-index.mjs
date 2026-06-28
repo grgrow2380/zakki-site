@@ -184,10 +184,29 @@ function collectArchives() {
   return [...archiveMap.entries()].sort((a, b) => b[0].localeCompare(a[0]));
 }
 
+function normalizeImagePath(image) {
+  if (!image) {
+    return "";
+  }
+
+  if (
+    image.startsWith("./") ||
+    image.startsWith("/") ||
+    image.startsWith("http://") ||
+    image.startsWith("https://")
+  ) {
+    return image;
+  }
+
+  return `./images/${image}`;
+}
+
 function generatePostCard(post) {
-  const image = post.image
+  const imagePath = normalizeImagePath(post.image);
+
+  const image = imagePath
     ? `<a class="post-card-image-link" href="./posts/${encodeURIComponent(path.basename(post.file, ".md"))}">
-  <img class="post-card-image" src="${post.image}" alt="${post.title}">
+  <img class="post-card-image" src="${imagePath}" alt="${post.title}">
 </a>`
     : "";
 

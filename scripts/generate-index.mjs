@@ -185,24 +185,27 @@ function collectArchives() {
 }
 
 function normalizeImagePath(image) {
-  if (!image) {
-    return "";
-  }
+  if (typeof image !== "string") return "";
+
+  const trimmedImage = image.trim();
+
+  if (!trimmedImage) return "";
 
   if (
-    image.startsWith("./") ||
-    image.startsWith("/") ||
-    image.startsWith("http://") ||
-    image.startsWith("https://")
+    trimmedImage.startsWith("./") ||
+    trimmedImage.startsWith("/") ||
+    trimmedImage.startsWith("http://") ||
+    trimmedImage.startsWith("https://")
   ) {
-    return image;
+    return trimmedImage;
   }
 
-  return `./images/${image}`;
+  return `./images/${trimmedImage}`;
 }
 
 function generatePostCard(post) {
   const imagePath = normalizeImagePath(post.image);
+  const cardClass = imagePath ? "post-card" : "post-card post-card-no-image";
 
   const image = imagePath
     ? `<a class="post-card-image-link" href="./posts/${encodeURIComponent(path.basename(post.file, ".md"))}">
@@ -221,7 +224,7 @@ function generatePostCard(post) {
     ? `<p class="post-card-description">${post.description}</p>`
     : "";
 
-  return `<div class="post-card">
+  return `<div class="${cardClass}">
 
 ${image}
 

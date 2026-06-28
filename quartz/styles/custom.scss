@@ -1748,3 +1748,130 @@ footer a:hover {
     padding-right: 1rem;
   }
 }
+
+/* ==============================
+   Post card without image
+   ============================== */
+
+.post-card-no-image {
+  padding-top: 1.1rem;
+  border-top: 3px solid var(--zakki-header);
+}
+
+.post-card-no-image h3 {
+  margin-top: 0;
+  font-size: 1.35rem;
+}
+
+.post-card-no-image h3,
+.post-card-no-image .post-card-meta,
+.post-card-no-image .post-card-description,
+.post-card-no-image .post-card-tags {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.post-card-no-image .post-card-description {
+  color: #d7e1e8;
+}
+
+.post-card-no-image .post-card-tags {
+  margin-bottom: 1.25rem;
+}
+
+/* ==============================
+   Post card without image border fix
+   ============================== */
+
+/* 画像なしカードも枠線の太さを均一にする */
+.post-card-no-image {
+  border-top: 1px solid rgba(120, 181, 181, 0.35) !important;
+}
+
+/* 画像なしカードは上に少し余白を足すだけ */
+.post-card-no-image {
+  padding-top: 1.25rem;
+}
+
+.post-card-no-image h3 {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+}
+
+/* ==============================
+   Post card hover border fix
+   ============================== */
+
+/* 通常カード・画像なしカードともにホバー時の枠線を均一にする */
+.post-card:hover,
+.post-card-no-image:hover {
+  border: 1px solid var(--zakki-header) !important;
+}
+
+/* 画像なしカードの通常時も上下左右を同じ指定にする */
+.post-card-no-image {
+  border: 1px solid rgba(120, 181, 181, 0.35) !important;
+}
+
+/* ==============================
+   Hide anchor icons in post cards
+   ============================== */
+
+/* トップページの記事カード内だけ、見出し横のアンカーアイコンを非表示 */
+.post-card .anchor,
+.post-card a.anchor,
+.post-card .heading-anchor,
+.post-card a.heading-anchor,
+.post-card h1 > a[aria-hidden="true"],
+.post-card h2 > a[aria-hidden="true"],
+.post-card h3 > a[aria-hidden="true"],
+.post-card h4 > a[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* ==============================
+   Post card meta refine
+   ============================== */
+
+/* 日付・カテゴリの行 */
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--zakki-muted);
+}
+
+/* メタ情報内リンク */
+.post-card-meta a {
+  color: var(--zakki-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.18s ease;
+}
+
+.post-card-meta a:hover {
+  color: #e58a3a;
+  text-decoration: none;
+}
+
+/* カテゴリだけ小さなラベル風に */
+.post-card-meta a {
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(120, 181, 181, 0.12);
+}
+
+/* 日付部分を少し控えめに */
+.post-card-meta {
+  opacity: 0.9;
+}
+
+/* タイトルとの距離を微調整 */
+.post-card h3 {
+  margin-bottom: 0.45rem;
+}

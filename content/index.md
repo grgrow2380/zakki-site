@@ -37,6 +37,22 @@ title: zakki
 
 </div>
 
+<div class="post-card">
+
+<a class="post-card-image-link" href="./posts/%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">
+  <img class="post-card-image" src="./images/second-post.jpg" alt="テスト投稿">
+</a>
+
+<h3><a href="./posts/%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">テスト投稿</a></h3>
+
+<div class="post-card-meta">2026-06-28 / <a href="./Blog">Blog</a></div>
+
+<p class="post-card-description">テスト投稿の説明文です。</p>
+
+<div class="post-card-tags"><span>#obsidian</span> <span>#memo</span></div>
+
+</div>
+
 </main>
 
 <aside class="home-sidebar">
@@ -61,7 +77,8 @@ title: zakki
 ## タグ
 
 <ul>
-<li>obsidian (1)</li>
+<li>memo (1)</li>
+<li>obsidian (2)</li>
 <li>quartz (1)</li>
 </ul>
 
@@ -74,7 +91,7 @@ title: zakki
 ## アーカイブ
 
 <ul>
-<li>2026-06 (1)</li>
+<li>2026-06 (2)</li>
 </ul>
 
 <p><a href="./Archive">アーカイブを見る</a></p>

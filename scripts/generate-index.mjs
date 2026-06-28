@@ -88,6 +88,17 @@ function toWikiLink(filePath, title) {
   return `[[posts/${fileName}|${title}]]`;
 }
 
+function toHtmlLink(filePath, title) {
+  const fileName = path.basename(filePath, ".md");
+  const href = `./posts/${encodeURIComponent(fileName)}`;
+  return `<a href="${href}">${title}</a>`;
+}
+
+function categoryHtmlLink(category) {
+  const href = `./${encodeURIComponent(category)}`;
+  return `<a href="${href}">${category}</a>`;
+}
+
 function formatDate(dateText) {
   if (!dateText) {
     return "日付なし";
@@ -172,21 +183,28 @@ function collectArchives() {
 }
 
 function generatePostCard(post) {
-  const description = post.description
-    ? `\n  ${post.description}\n`
-    : "";
-
   const tags =
     post.tags.length > 0
-      ? `\n  tags: ${post.tags.map((tag) => `#${tag}`).join(" ")}`
+      ? `<div class="post-card-tags">${post.tags
+          .map((tag) => `<span>#${tag}</span>`)
+          .join(" ")}</div>`
       : "";
 
-  return `### ${toWikiLink(post.file, post.title)}
+  const description = post.description
+    ? `<p class="post-card-description">${post.description}</p>`
+    : "";
 
-- ${formatDate(post.date)} / [[${post.category}]]
+  return `<div class="post-card">
 
-${description}${tags}
-`;
+<h3>${toHtmlLink(post.file, post.title)}</h3>
+
+<div class="post-card-meta">${formatDate(post.date)} / ${categoryHtmlLink(post.category)}</div>
+
+${description}
+
+${tags}
+
+</div>`;
 }
 
 function generateIndex() {

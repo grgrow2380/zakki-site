@@ -14,15 +14,17 @@ title: zakki
 
 ## Latest Posts
 
-### [[posts/はじめての投稿|はじめての投稿]]
+<div class="post-card">
 
-- 2026-06-28 / [[Blog]]
+<h3><a href="./posts/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE%E6%8A%95%E7%A8%BF">はじめての投稿</a></h3>
 
+<div class="post-card-meta">2026-06-28 / <a href="./Blog">Blog</a></div>
 
-  Obsidianで書いたメモを、Quartzを使って公開できるようにした最初の投稿です。
+<p class="post-card-description">Obsidianで書いたメモを、Quartzを使って公開できるようにした最初の投稿です。</p>
 
-  tags: #obsidian #quartz
+<div class="post-card-tags"><span>#obsidian</span> <span>#quartz</span></div>
 
+</div>
 
 ---
 

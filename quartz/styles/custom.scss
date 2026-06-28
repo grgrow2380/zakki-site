@@ -489,3 +489,134 @@ article {
     padding-left: 0;
   }
 }
+
+/* ==============================
+   Blogger-like post cards refine
+   ============================== */
+
+/* Latest Posts周り */
+.home-main h2 {
+  margin-bottom: 1.2rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* 記事カード全体 */
+.post-card {
+  margin: 0 0 1.8rem;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--light);
+  box-shadow: none;
+}
+
+/* カード内の画像 */
+.post-card-image-link {
+  display: block;
+  margin: 0;
+  border-radius: 0;
+  background: var(--lightgray);
+}
+
+.post-card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* カード内の本文エリア */
+.post-card h3,
+.post-card-meta,
+.post-card-description,
+.post-card-tags {
+  margin-left: 1.15rem;
+  margin-right: 1.15rem;
+}
+
+/* タイトル */
+.post-card h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.post-card h3 a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.post-card h3 a:hover {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+/* 日付・カテゴリ */
+.post-card-meta {
+  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.post-card-meta a {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.post-card-meta a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* 説明文 */
+.post-card-description {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.75;
+  color: var(--darkgray);
+}
+
+/* タグ */
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.post-card-tags span {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: var(--lightgray);
+  color: var(--darkgray);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* ホバーは控えめに */
+.post-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--gray);
+}
+
+/* スマホ調整 */
+@media all and (max-width: 800px) {
+  .post-card h3 {
+    font-size: 1.18rem;
+  }
+
+  .post-card h3,
+  .post-card-meta,
+  .post-card-description,
+  .post-card-tags {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

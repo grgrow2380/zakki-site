@@ -26,7 +26,8 @@ function readMarkdownFiles(dir) {
 }
 
 function parseFrontmatter(text) {
-  const match = text.match(/^---\s*\n([\s\S]*?)\n---/);
+  const cleanText = text.replace(/^\uFEFF/, "");
+  const match = cleanText.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/);
 
   if (!match) {
     return {};
@@ -34,7 +35,7 @@ function parseFrontmatter(text) {
 
   const yaml = match[1];
   const data = {};
-  const lines = yaml.split("\n");
+  const lines = yaml.split(/\r?\n/);
 
   let currentKey = null;
 
@@ -50,7 +51,18 @@ function parseFrontmatter(text) {
         currentKey = key;
       } else {
         value = value.replace(/^["']|["']$/g, "");
-        data[key] = value;
+
+        // tags: [obsidian, quartz] 形式にも一応対応
+        if (value.startsWith("[") && value.endsWith("]")) {
+          data[key] = value
+            .slice(1, -1)
+            .split(",")
+            .map((item) => item.trim())
+            .filter(Boolean);
+        } else {
+          data[key] = value;
+        }
+
         currentKey = key;
       }
 
@@ -84,6 +96,20 @@ function formatDate(dateText) {
   return dateText;
 }
 
+function getMonth(dateText) {
+  if (!dateText) {
+    return "日付なし";
+  }
+
+  const match = String(dateText).match(/^(\d{4})-(\d{2})/);
+
+  if (!match) {
+    return "日付なし";
+  }
+
+  return `${match[1]}-${match[2]}`;
+}
+
 const files = readMarkdownFiles(postsDir);
 
 const posts = files
@@ -95,6 +121,7 @@ const posts = files
     const date = frontmatter.date || "";
     const category = frontmatter.category || "Blog";
     const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [];
+    const description = frontmatter.description || "";
     const draft = String(frontmatter.draft).toLowerCase() === "true";
 
     return {
@@ -103,6 +130,7 @@ const posts = files
       date,
       category,
       tags,
+      description,
       draft,
     };
   })
@@ -111,12 +139,70 @@ const posts = files
     return String(b.date).localeCompare(String(a.date));
   });
 
+function collectTags() {
+  const tagMap = new Map();
+
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      if (!tagMap.has(tag)) {
+        tagMap.set(tag, []);
+      }
+
+      tagMap.get(tag).push(post);
+    }
+  }
+
+  return [...tagMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+function collectArchives() {
+  const archiveMap = new Map();
+
+  for (const post of posts) {
+    const month = getMonth(post.date);
+
+    if (!archiveMap.has(month)) {
+      archiveMap.set(month, []);
+    }
+
+    archiveMap.get(month).push(post);
+  }
+
+  return [...archiveMap.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+}
+
+function generatePostCard(post) {
+  const description = post.description
+    ? `\n  ${post.description}\n`
+    : "";
+
+  const tags =
+    post.tags.length > 0
+      ? `\n  tags: ${post.tags.map((tag) => `#${tag}`).join(" ")}`
+      : "";
+
+  return `### ${toWikiLink(post.file, post.title)}
+
+- ${formatDate(post.date)} / [[${post.category}]]
+
+${description}${tags}
+`;
+}
+
 function generateIndex() {
   const latestPosts = posts
     .slice(0, 10)
-    .map((post) => {
-      return `- ${toWikiLink(post.file, post.title)} — ${formatDate(post.date)} / ${post.category}`;
-    })
+    .map((post) => generatePostCard(post))
+    .join("\n---\n\n");
+
+  const tagList = collectTags()
+    .slice(0, 20)
+    .map(([tag, tagPosts]) => `- ${tag} (${tagPosts.length})`)
+    .join("\n");
+
+  const archiveList = collectArchives()
+    .slice(0, 12)
+    .map(([month, archivePosts]) => `- ${month} (${archivePosts.length})`)
     .join("\n");
 
   return `---
@@ -129,13 +215,37 @@ title: zakki
 
 本業は漫画家ですが、ここでは仕事の話だけでなく、気になったこと・試したこと・考えたことを、肩肘張らずに書いていきます。
 
-## カテゴリ
+[About](./About) / [Sitemap](./Sitemap) / [Tags](./Tags) / [Archive](./Archive)
+
+---
+
+## Latest Posts
+
+${latestPosts || "まだ記事がありません。"}
+
+---
+
+## カテゴリー
 
 ${categories.map((category) => `- [[${category}]]`).join("\n")}
 
-## 最近のメモ
+---
 
-${latestPosts || "まだ記事がありません。"}
+## タグ
+
+${tagList || "まだタグがありません。"}
+
+[[Tags|すべてのタグを見る]]
+
+---
+
+## アーカイブ
+
+${archiveList || "まだ記事がありません。"}
+
+[[Archive|アーカイブを見る]]
+
+---
 
 ## このサイトについて
 
@@ -147,10 +257,8 @@ function generateCategoryPage(category) {
   const categoryPosts = posts.filter((post) => post.category === category);
 
   const list = categoryPosts
-    .map((post) => {
-      return `- ${toWikiLink(post.file, post.title)} — ${formatDate(post.date)}`;
-    })
-    .join("\n");
+    .map((post) => generatePostCard(post))
+    .join("\n---\n\n");
 
   return `---
 title: ${category}
@@ -164,6 +272,111 @@ ${list || "まだ記事がありません。"}
 `;
 }
 
+function generateTagsPage() {
+  const tags = collectTags();
+
+  const body = tags
+    .map(([tag, tagPosts]) => {
+      const list = tagPosts
+        .map((post) => `- ${toWikiLink(post.file, post.title)} — ${formatDate(post.date)} / ${post.category}`)
+        .join("\n");
+
+      return `## ${tag}
+
+${list}`;
+    })
+    .join("\n\n---\n\n");
+
+  return `---
+title: Tags
+---
+
+# Tags
+
+タグ別の記事一覧です。
+
+${body || "まだタグがありません。"}
+`;
+}
+
+function generateArchivePage() {
+  const archives = collectArchives();
+
+  const body = archives
+    .map(([month, archivePosts]) => {
+      const list = archivePosts
+        .map((post) => `- ${toWikiLink(post.file, post.title)} — ${formatDate(post.date)} / ${post.category}`)
+        .join("\n");
+
+      return `## ${month}
+
+${list}`;
+    })
+    .join("\n\n---\n\n");
+
+  return `---
+title: Archive
+---
+
+# Archive
+
+月別の記事一覧です。
+
+${body || "まだ記事がありません。"}
+`;
+}
+
+function generateSitemapPage() {
+  const list = posts
+    .map((post) => `- ${toWikiLink(post.file, post.title)} — ${formatDate(post.date)} / ${post.category}`)
+    .join("\n");
+
+  return `---
+title: Sitemap
+---
+
+# Sitemap
+
+このサイトの記事一覧です。
+
+## 固定ページ
+
+- [[index|Home]]
+- [[About]]
+- [[Tags]]
+- [[Archive]]
+
+## カテゴリー
+
+${categories.map((category) => `- [[${category}]]`).join("\n")}
+
+## 記事
+
+${list || "まだ記事がありません。"}
+`;
+}
+
+function generateAboutPage() {
+  const aboutPath = path.join(contentDir, "About.md");
+
+  if (fs.existsSync(aboutPath)) {
+    return;
+  }
+
+  const body = `---
+title: About
+---
+
+# About
+
+このサイトは、漫画、ガジェット、ゲーム、PC、日々のメモなどを置いていく雑記サイトです。
+
+Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開しています。
+`;
+
+  fs.writeFileSync(aboutPath, body, "utf8");
+}
+
 fs.writeFileSync(path.join(contentDir, "index.md"), generateIndex(), "utf8");
 
 for (const category of categories) {
@@ -174,5 +387,13 @@ for (const category of categories) {
   );
 }
 
-console.log("記事一覧ページを自動生成しました。");
+fs.writeFileSync(path.join(contentDir, "Tags.md"), generateTagsPage(), "utf8");
+fs.writeFileSync(path.join(contentDir, "Archive.md"), generateArchivePage(), "utf8");
+fs.writeFileSync(path.join(contentDir, "Sitemap.md"), generateSitemapPage(), "utf8");
+
+generateAboutPage();
+
+console.log("Blogger風トップページの土台を自動生成しました。");
 console.log(`公開記事数: ${posts.length}`);
+console.log(`タグ数: ${collectTags().length}`);
+console.log(`アーカイブ月数: ${collectArchives().length}`);

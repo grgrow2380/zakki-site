@@ -247,6 +247,11 @@ function generateIndex() {
     .map(([tag, tagPosts]) => `<li>${tag} (${tagPosts.length})</li>`)
     .join("\n");
 
+  const sidebarTagLinks = collectTags()
+    .slice(0, 20)
+    .map(([tag, tagPosts]) => `<a href="./tags/${encodeURIComponent(tag)}">#${tag} (${tagPosts.length})</a>`)
+    .join("\n");
+
   const archiveList = collectArchives()
     .slice(0, 12)
     .map(([month, archivePosts]) => `<li>${month} (${archivePosts.length})</li>`)
@@ -288,47 +293,35 @@ ${latestPosts || "まだ記事がありません。"}
 
 <aside class="home-sidebar">
 
-<section class="sidebar-box">
+<div class="sidebar-box sidebar-about">
+<h3>このサイトについて</h3>
+<p>漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく個人ブログです。</p>
+<p><a href="./About">詳しく見る</a></p>
+</div>
 
-## カテゴリー
-
+<div class="sidebar-box">
+<h3>カテゴリー</h3>
 <ul>
-${categoryList}
+  <li><a href="./Blog">Blog</a></li>
+  <li><a href="./漫画・創作">漫画・創作</a></li>
+  <li><a href="./PC・ガジェット">PC・ガジェット</a></li>
+  <li><a href="./Python">Python</a></li>
+  <li><a href="./ゲーム">ゲーム</a></li>
+  <li><a href="./レビュー">レビュー</a></li>
 </ul>
+</div>
 
-</section>
+<div class="sidebar-box">
+<h3>タグ</h3>
+<div class="sidebar-tags">
+${sidebarTagLinks || `<a href="./Tags">タグ一覧を見る</a>`}
+</div>
+</div>
 
-<section class="sidebar-box">
-
-## タグ
-
-<ul>
-${tagList || "<li>まだタグがありません。</li>"}
-</ul>
-
-<p><a href="./Tags">すべてのタグを見る</a></p>
-
-</section>
-
-<section class="sidebar-box">
-
-## アーカイブ
-
-<ul>
-${archiveList || "<li>まだ記事がありません。</li>"}
-</ul>
-
-<p><a href="./Archive">アーカイブを見る</a></p>
-
-</section>
-
-<section class="sidebar-box">
-
-## このサイトについて
-
-<p>このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。</p>
-
-</section>
+<div class="sidebar-box">
+<h3>アーカイブ</h3>
+<p><a href="./Archive">記事一覧を見る</a></p>
+</div>
 
 </aside>
 

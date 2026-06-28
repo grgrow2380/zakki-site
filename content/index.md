@@ -58,54 +58,37 @@ title: zakki
 
 <aside class="home-sidebar">
 
-<section class="sidebar-box">
+<div class="sidebar-box sidebar-about">
+<h3>このサイトについて</h3>
+<p>漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく個人ブログです。</p>
+<p><a href="./About">詳しく見る</a></p>
+</div>
 
-## カテゴリー
-
+<div class="sidebar-box">
+<h3>カテゴリー</h3>
 <ul>
-<li><a href="./Blog">Blog</a></li>
-<li><a href="./%E6%BC%AB%E7%94%BB%E3%83%BB%E5%89%B5%E4%BD%9C">漫画・創作</a></li>
-<li><a href="./PC%E3%83%BB%E3%82%AC%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88">PC・ガジェット</a></li>
-<li><a href="./Python">Python</a></li>
-<li><a href="./%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a></li>
-<li><a href="./%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC">レビュー</a></li>
+  <li><a href="./Blog">Blog</a></li>
+  <li><a href="./漫画・創作">漫画・創作</a></li>
+  <li><a href="./PC・ガジェット">PC・ガジェット</a></li>
+  <li><a href="./Python">Python</a></li>
+  <li><a href="./ゲーム">ゲーム</a></li>
+  <li><a href="./レビュー">レビュー</a></li>
 </ul>
+</div>
 
-</section>
+<div class="sidebar-box">
+<h3>タグ</h3>
+<div class="sidebar-tags">
+<a href="./tags/blog">#blog (1)</a>
+<a href="./tags/memo">#memo (1)</a>
+<a href="./tags/obsidian">#obsidian (2)</a>
+</div>
+</div>
 
-<section class="sidebar-box">
-
-## タグ
-
-<ul>
-<li>blog (1)</li>
-<li>memo (1)</li>
-<li>obsidian (2)</li>
-</ul>
-
-<p><a href="./Tags">すべてのタグを見る</a></p>
-
-</section>
-
-<section class="sidebar-box">
-
-## アーカイブ
-
-<ul>
-<li>2026-06 (2)</li>
-</ul>
-
-<p><a href="./Archive">アーカイブを見る</a></p>
-
-</section>
-
-<section class="sidebar-box">
-
-## このサイトについて
-
-<p>このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。</p>
-
-</section>
+<div class="sidebar-box">
+<h3>アーカイブ</h3>
+<p><a href="./Archive">記事一覧を見る</a></p>
+</div>
 
 </aside>
 

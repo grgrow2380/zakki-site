@@ -107,3 +107,8 @@ title: zakki
 </aside>
 
 </div>
+
+<footer class="home-footer">
+  <p>© zakki</p>
+  <p>Powered by Obsidian, Quartz, and GitHub Pages.</p>
+</footer>

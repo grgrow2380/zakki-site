@@ -295,3 +295,122 @@ article h2 + ul {
     border-radius: 12px 12px 0 0;
   }
 }
+
+/* ==============================
+   Blogger-like finish
+   ============================== */
+
+/* 全体を少しブログっぽく */
+article {
+  font-size: 0.98rem;
+}
+
+/* ホーム上部 */
+.home-nav {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* 記事カードの完成度アップ */
+.post-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.055);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.075);
+}
+
+.post-card h3 {
+  font-size: 1.25rem;
+}
+
+.post-card-meta {
+  letter-spacing: 0.02em;
+}
+
+/* 記事説明文 */
+.post-card-description {
+  color: var(--darkgray);
+}
+
+/* タグをBloggerのラベル風に */
+.post-card-tags span {
+  background: var(--lightgray);
+  border: none;
+  font-size: 0.78rem;
+}
+
+/* サイドバーをウィジェットっぽく */
+.sidebar-box {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.045);
+}
+
+.sidebar-box h2 {
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-box a {
+  text-decoration: none;
+}
+
+.sidebar-box a:hover {
+  text-decoration: underline;
+}
+
+/* カテゴリ・タグ・アーカイブのリスト */
+.sidebar-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-box li {
+  padding: 0.28rem 0;
+  border-bottom: 1px dashed var(--lightgray);
+}
+
+.sidebar-box li:last-child {
+  border-bottom: none;
+}
+
+/* トップページ下部 */
+.home-footer {
+  margin-top: 3rem;
+  padding: 1.4rem 0 0.2rem;
+  border-top: 1px solid var(--lightgray);
+  color: var(--gray);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.home-footer p {
+  margin: 0.25rem 0;
+}
+
+/* 画像つきカード */
+.post-card-image-link {
+  background: var(--lightgray);
+}
+
+.post-card-image {
+  filter: saturate(0.98);
+}
+
+/* スマホ時は影を少し控えめに */
+@media all and (max-width: 800px) {
+  .post-card {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.045);
+  }
+
+  .post-card:hover {
+    transform: none;
+  }
+
+  .home-footer {
+    text-align: left;
+  }
+}

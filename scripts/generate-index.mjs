@@ -211,16 +211,20 @@ function generateIndex() {
   const latestPosts = posts
     .slice(0, 10)
     .map((post) => generatePostCard(post))
-    .join("\n---\n\n");
+    .join("\n\n");
 
   const tagList = collectTags()
     .slice(0, 20)
-    .map(([tag, tagPosts]) => `- ${tag} (${tagPosts.length})`)
+    .map(([tag, tagPosts]) => `<li>${tag} (${tagPosts.length})</li>`)
     .join("\n");
 
   const archiveList = collectArchives()
     .slice(0, 12)
-    .map(([month, archivePosts]) => `- ${month} (${archivePosts.length})`)
+    .map(([month, archivePosts]) => `<li>${month} (${archivePosts.length})</li>`)
+    .join("\n");
+
+  const categoryList = categories
+    .map((category) => `<li>${categoryHtmlLink(category)}</li>`)
     .join("\n");
 
   return `---
@@ -233,41 +237,70 @@ title: zakki
 
 本業は漫画家ですが、ここでは仕事の話だけでなく、気になったこと・試したこと・考えたことを、肩肘張らずに書いていきます。
 
-[About](./About) / [Sitemap](./Sitemap) / [Tags](./Tags) / [Archive](./Archive)
+<div class="home-nav">
+  <a href="./About">About</a>
+  <a href="./Sitemap">Sitemap</a>
+  <a href="./Tags">Tags</a>
+  <a href="./Archive">Archive</a>
+</div>
 
----
+<div class="home-layout">
+
+<main class="home-main">
 
 ## Latest Posts
 
 ${latestPosts || "まだ記事がありません。"}
 
----
+</main>
+
+<aside class="home-sidebar">
+
+<section class="sidebar-box">
 
 ## カテゴリー
 
-${categories.map((category) => `- [[${category}]]`).join("\n")}
+<ul>
+${categoryList}
+</ul>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## タグ
 
-${tagList || "まだタグがありません。"}
+<ul>
+${tagList || "<li>まだタグがありません。</li>"}
+</ul>
 
-[[Tags|すべてのタグを見る]]
+<p><a href="./Tags">すべてのタグを見る</a></p>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## アーカイブ
 
-${archiveList || "まだ記事がありません。"}
+<ul>
+${archiveList || "<li>まだ記事がありません。</li>"}
+</ul>
 
-[[Archive|アーカイブを見る]]
+<p><a href="./Archive">アーカイブを見る</a></p>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## このサイトについて
 
-このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。
+<p>このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。</p>
+
+</section>
+
+</aside>
+
+</div>
 `;
 }
 

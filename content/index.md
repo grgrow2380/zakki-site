@@ -8,9 +8,16 @@ title: zakki
 
 本業は漫画家ですが、ここでは仕事の話だけでなく、気になったこと・試したこと・考えたことを、肩肘張らずに書いていきます。
 
-[About](./About) / [Sitemap](./Sitemap) / [Tags](./Tags) / [Archive](./Archive)
+<div class="home-nav">
+  <a href="./About">About</a>
+  <a href="./Sitemap">Sitemap</a>
+  <a href="./Tags">Tags</a>
+  <a href="./Archive">Archive</a>
+</div>
 
----
+<div class="home-layout">
+
+<main class="home-main">
 
 ## Latest Posts
 
@@ -26,36 +33,58 @@ title: zakki
 
 </div>
 
----
+</main>
+
+<aside class="home-sidebar">
+
+<section class="sidebar-box">
 
 ## カテゴリー
 
-- [[Blog]]
-- [[漫画・創作]]
-- [[PC・ガジェット]]
-- [[Python]]
-- [[ゲーム]]
-- [[レビュー]]
+<ul>
+<li><a href="./Blog">Blog</a></li>
+<li><a href="./%E6%BC%AB%E7%94%BB%E3%83%BB%E5%89%B5%E4%BD%9C">漫画・創作</a></li>
+<li><a href="./PC%E3%83%BB%E3%82%AC%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88">PC・ガジェット</a></li>
+<li><a href="./Python">Python</a></li>
+<li><a href="./%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a></li>
+<li><a href="./%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC">レビュー</a></li>
+</ul>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## タグ
 
-- obsidian (1)
-- quartz (1)
+<ul>
+<li>obsidian (1)</li>
+<li>quartz (1)</li>
+</ul>
 
-[[Tags|すべてのタグを見る]]
+<p><a href="./Tags">すべてのタグを見る</a></p>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## アーカイブ
 
-- 2026-06 (1)
+<ul>
+<li>2026-06 (1)</li>
+</ul>
 
-[[Archive|アーカイブを見る]]
+<p><a href="./Archive">アーカイブを見る</a></p>
 
----
+</section>
+
+<section class="sidebar-box">
 
 ## このサイトについて
 
-このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。
+<p>このサイトは、Obsidianで書いたメモの中から、公開してもよいものをQuartzで公開している雑記サイトです。</p>
+
+</section>
+
+</aside>
+
+</div>

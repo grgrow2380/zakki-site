@@ -262,3 +262,36 @@ article h2 + ul {
     position: static;
   }
 }
+
+/* ==============================
+   post card image
+   ============================== */
+
+.post-card-image-link {
+  display: block;
+  margin: -1.1rem -1.2rem 1rem;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+
+.post-card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.post-card-image-link:hover .post-card-image {
+  transform: scale(1.02);
+}
+
+.post-card-image {
+  transition: transform 0.2s ease;
+}
+
+@media all and (max-width: 800px) {
+  .post-card-image-link {
+    margin: -1rem -1rem 0.9rem;
+    border-radius: 12px 12px 0 0;
+  }
+}

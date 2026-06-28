@@ -1875,3 +1875,262 @@ footer a:hover {
 .post-card h3 {
   margin-bottom: 0.45rem;
 }
+
+/* ==============================
+   Tag style unify
+   ============================== */
+
+/* 記事カード内タグ */
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+}
+
+.post-card-tags span {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  background: #3a4650;
+  color: #d7e1e8;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* 右カラムのタグ */
+.home-sidebar .sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.home-sidebar .sidebar-tags a {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  background: #3a4650;
+  color: #d7e1e8 !important;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.home-sidebar .sidebar-tags a:hover {
+  background: rgba(229, 138, 58, 0.18);
+  color: #e58a3a !important;
+  text-decoration: none;
+}
+
+/* Tagsページなど、本文内のタグ一覧リンクも少し統一 */
+article a[href*="/tags/"],
+article a[href*="./tags/"] {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 6px;
+  background: #3a4650;
+  color: #d7e1e8;
+  font-size: 0.86em;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+article a[href*="/tags/"]:hover,
+article a[href*="./tags/"]:hover {
+  background: rgba(229, 138, 58, 0.18);
+  color: #e58a3a;
+  text-decoration: none;
+}
+
+/* 記事カード内タグもホバー可能に見えすぎないよう控えめに */
+.post-card-tags span {
+  opacity: 0.95;
+}
+
+/* ==============================
+   Mobile layout refine
+   ============================== */
+
+@media all and (max-width: 900px) {
+  /* ページ全体 */
+  body {
+    overflow-x: hidden;
+  }
+
+  .page,
+  .center,
+  article {
+    max-width: 100%;
+  }
+
+  /* 固定ヘッダー */
+  .blog-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+
+    padding: 1rem 1.1rem !important;
+  }
+
+  .blog-title {
+    font-size: 1.2rem;
+  }
+
+  .blog-nav {
+    justify-content: flex-start;
+    gap: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  /* トップページ2カラムを1カラムに */
+  .home-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2.4rem !important;
+    width: auto;
+    max-width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Latest Posts */
+  .home-main h2 {
+    font-size: 0.9rem;
+  }
+
+  /* 記事カード */
+  .post-card {
+    width: 100%;
+    margin-bottom: 1.8rem;
+  }
+
+  .post-card h3 {
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
+
+  .post-card-description {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+  .post-card-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* 画像なしカード */
+  .post-card-no-image {
+    padding-top: 1rem;
+  }
+
+  /* メタ情報 */
+  .post-card-meta {
+    font-size: 0.76rem;
+  }
+
+  /* タグ */
+  .post-card-tags,
+  .home-sidebar .sidebar-tags {
+    gap: 0.4rem;
+  }
+
+  .post-card-tags span,
+  .home-sidebar .sidebar-tags a {
+    font-size: 0.72rem;
+  }
+
+  /* 右カラムは下に回す */
+  .home-sidebar {
+    gap: 2rem;
+    margin-top: 0.3rem;
+  }
+
+  .home-sidebar .sidebar-box h3 {
+    font-size: 0.86rem;
+  }
+
+  /* 記事ページ本文 */
+  article {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  article h1 {
+    font-size: 1.55rem;
+  }
+
+  article h2 {
+    font-size: 1.25rem;
+  }
+
+  article h3 {
+    font-size: 1.1rem;
+  }
+
+  article p,
+  article li {
+    font-size: 0.96rem;
+  }
+
+  article img {
+    border-radius: 6px;
+  }
+
+  /* フッター */
+  footer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+/* ==============================
+   Small mobile refine
+   ============================== */
+
+@media all and (max-width: 520px) {
+  .blog-header {
+    padding-top: 0.95rem !important;
+    padding-bottom: 0.95rem !important;
+  }
+
+  .blog-nav {
+    gap: 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .home-layout {
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
+  }
+
+  .post-card h3,
+  .post-card-meta,
+  .post-card-description,
+  .post-card-tags {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .post-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .post-card-description {
+    font-size: 0.9rem;
+  }
+
+  .sidebar-box p {
+    font-size: 0.88rem;
+  }
+}

@@ -1508,3 +1508,202 @@ article pre {
 .sidebar-popular-post {
   margin: 0;
 }
+
+/* ==============================
+   Header afterimg-like refine + sticky
+   ============================== */
+
+/* ヘッダー全体を細めにして、スクロールしても上部固定 */
+.blog-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 2rem;
+
+  max-width: none;
+  margin: 0 0 2.6rem;
+  padding: 1.05rem 2.2rem;
+
+  background: var(--zakki-header);
+  border-bottom: none;
+  text-align: left;
+}
+
+/* 固定ヘッダーの下に薄い影をつけて、本文との境目を分かりやすく */
+.blog-header {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* タイトル */
+.blog-title {
+  max-width: none;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #4c5d60;
+}
+
+/* 説明文は非表示 */
+.blog-description {
+  display: none;
+}
+
+/* ナビ */
+.blog-nav {
+  max-width: none;
+  justify-content: flex-end;
+  margin: 0;
+  gap: 1.1rem;
+  font-size: 0.86rem;
+  line-height: 1.2;
+}
+
+/* ナビリンク */
+.blog-nav a {
+  padding: 0;
+  border-radius: 0;
+  color: #4c5d60;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.blog-nav a:hover {
+  background: transparent;
+  color: #2f3b3e;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* 見出しリンクへ飛んだ時、固定ヘッダーに隠れないようにする */
+article h1,
+article h2,
+article h3,
+article h4 {
+  scroll-margin-top: 5rem;
+}
+
+/* スマホでは縦並び */
+@media all and (max-width: 800px) {
+  .blog-header {
+    grid-template-columns: 1fr;
+    row-gap: 0.8rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .blog-nav {
+    justify-content: flex-start;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* ==============================
+   Header minor adjust
+   ============================== */
+
+/* ヘッダーの縦幅を少し太くする */
+.blog-header {
+  padding-top: 1.35rem !important;
+  padding-bottom: 1.35rem !important;
+}
+
+/* ナビリンクの通常状態 */
+.blog-nav a {
+  color: #4c5d60;
+  text-decoration: none !important;
+  transition: color 0.18s ease;
+}
+
+/* マウスオーバー時：下線ではなくオレンジに変化 */
+.blog-nav a:hover {
+  color: #e58a3a !important;
+  background: transparent !important;
+  text-decoration: none !important;
+}
+
+/* スマホ時も少し余裕を持たせる */
+@media all and (max-width: 800px) {
+  .blog-header {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+  }
+}
+
+/* ==============================
+   Home layout refine
+   ============================== */
+
+/* トップページ全体の横幅 */
+.home-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 300px !important;
+  gap: 3rem !important;
+  max-width: 1120px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* 左カラム */
+.home-main {
+  min-width: 0;
+}
+
+/* 右カラム */
+.home-sidebar {
+  min-width: 0;
+}
+
+/* Latest Posts見出し */
+.home-main h2 {
+  margin: 0 0 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* 記事カード間の余白 */
+.post-card {
+  margin-bottom: 2.2rem;
+}
+
+/* 記事カードの枠線を少し控えめに */
+.post-card {
+  border-color: rgba(120, 181, 181, 0.35);
+}
+
+/* 記事タイトルを少しだけ締める */
+.post-card h3 {
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+/* 記事説明文を少し控えめに */
+.post-card-description {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+/* 日付・カテゴリ */
+.post-card-meta {
+  font-size: 0.8rem;
+}
+
+/* スマホでは1カラム */
+@media all and (max-width: 900px) {
+  .home-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2.2rem !important;
+    max-width: 100%;
+  }
+
+  .home-sidebar {
+    margin-top: 0.5rem;
+  }
+}

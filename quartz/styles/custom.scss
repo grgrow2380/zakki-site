@@ -414,3 +414,78 @@ article {
     text-align: left;
   }
 }
+
+/* ==============================
+   Blogger-like header
+   ============================== */
+
+.blog-header {
+  margin: 0 auto 2.4rem;
+  padding: 2.2rem 1.5rem 1.4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.blog-title {
+  margin: 0;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--dark);
+}
+
+.blog-description {
+  margin: 0.8rem auto 1.4rem;
+  max-width: 680px;
+  font-size: 0.98rem;
+  color: var(--darkgray);
+}
+
+.blog-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+
+.blog-nav a {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--darkgray);
+}
+
+.blog-nav a:hover {
+  background: var(--lightgray);
+  color: var(--dark);
+  text-decoration: none;
+}
+
+/* 以前のhome-navが残っている場合は非表示 */
+.home-nav {
+  display: none !important;
+}
+
+/* トップページの最初の見出し余白調整 */
+.home-main h2 {
+  margin-top: 0;
+}
+
+@media all and (max-width: 800px) {
+  .blog-header {
+    padding: 1.7rem 1rem 1.1rem;
+    text-align: left;
+  }
+
+  .blog-nav {
+    justify-content: flex-start;
+  }
+
+  .blog-nav a {
+    padding-left: 0;
+  }
+}

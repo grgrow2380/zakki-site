@@ -2,17 +2,20 @@
 title: zakki
 ---
 
-# zakki
+<div class="blog-header">
 
-漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく場所です。
+<p class="blog-title">zakki</p>
 
-本業は漫画家ですが、ここでは仕事の話だけでなく、気になったこと・試したこと・考えたことを、肩肘張らずに書いていきます。
+<p class="blog-description">漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく場所です。</p>
 
-<div class="home-nav">
+<nav class="blog-nav">
+  <a href="./">Home</a>
   <a href="./About">About</a>
   <a href="./Sitemap">Sitemap</a>
   <a href="./Tags">Tags</a>
   <a href="./Archive">Archive</a>
+</nav>
+
 </div>
 
 <div class="home-layout">

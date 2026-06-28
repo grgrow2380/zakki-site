@@ -9,11 +9,10 @@ title: zakki
 <p class="blog-description">漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく場所です。</p>
 
 <nav class="blog-nav">
-  <a href="./">Home</a>
-  <a href="./About">About</a>
-  <a href="./Sitemap">Sitemap</a>
-  <a href="./Tags">Tags</a>
-  <a href="./Archive">Archive</a>
+  <a href="./About">about</a>
+  <a href="./Sitemap">sitemap</a>
+  <a href="./Tags">tags</a>
+  <a href="./Archive">archive</a>
 </nav>
 
 </div>

@@ -294,33 +294,30 @@ ${latestPosts || "まだ記事がありません。"}
 <aside class="home-sidebar">
 
 <div class="sidebar-box sidebar-about">
-<h3>このサイトについて</h3>
+<h3>ABOUT</h3>
 <p>漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく個人ブログです。</p>
 <p><a href="./About">詳しく見る</a></p>
 </div>
 
 <div class="sidebar-box">
-<h3>カテゴリー</h3>
-<ul>
-  <li><a href="./Blog">Blog</a></li>
-  <li><a href="./漫画・創作">漫画・創作</a></li>
-  <li><a href="./PC・ガジェット">PC・ガジェット</a></li>
-  <li><a href="./Python">Python</a></li>
-  <li><a href="./ゲーム">ゲーム</a></li>
-  <li><a href="./レビュー">レビュー</a></li>
+<h3>CATEGORY</h3>
+<ul class="sidebar-category-list">
+${categoryList}
 </ul>
 </div>
 
 <div class="sidebar-box">
-<h3>タグ</h3>
+<h3>TAGS</h3>
 <div class="sidebar-tags">
 ${sidebarTagLinks || `<a href="./Tags">タグ一覧を見る</a>`}
 </div>
 </div>
 
 <div class="sidebar-box">
-<h3>アーカイブ</h3>
-<p><a href="./Archive">記事一覧を見る</a></p>
+<h3>ARCHIVE</h3>
+<ul class="sidebar-archive-list">
+${archiveList}
+</ul>
 </div>
 
 </aside>

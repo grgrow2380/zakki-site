@@ -950,3 +950,561 @@ article li a {
     padding: 0.85rem 1rem;
   }
 }
+
+/* ==============================
+   afterimg-like dark teal theme
+   ============================== */
+
+:root {
+  --zakki-bg: #262c34;
+  --zakki-card: #303741;
+  --zakki-card-2: #2b323b;
+  --zakki-header: #78b5b5;
+  --zakki-border: #526b76;
+  --zakki-text: #f4f7f8;
+  --zakki-muted: #8b98a3;
+  --zakki-link: #8fcfd0;
+}
+
+/* 全体背景 */
+body,
+.page,
+.center,
+article {
+  background: var(--zakki-bg) !important;
+  color: var(--zakki-text);
+}
+
+/* 上部ヘッダー */
+.blog-header {
+  background: var(--zakki-header);
+  border-bottom: none;
+  margin-bottom: 2.4rem;
+  padding-top: 1.7rem;
+  padding-bottom: 1.4rem;
+}
+
+.blog-title {
+  color: #4f5f62;
+  font-size: 1.35rem;
+  text-align: left;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.blog-description {
+  color: #4f5f62;
+}
+
+.blog-nav {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: flex-end;
+}
+
+.blog-nav a {
+  color: #4f5f62;
+  font-weight: 600;
+}
+
+.blog-nav a:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #2f3b3e;
+}
+
+/* 見出しをafterimg風の横線付きに */
+.home-main h2,
+.sidebar-box h3,
+.sidebar-box h2,
+article h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-bottom: none;
+  color: var(--zakki-text);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.home-main h2::after,
+.sidebar-box h3::after,
+.sidebar-box h2::after,
+article h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--zakki-header);
+  opacity: 0.85;
+}
+
+/* 記事カード */
+.post-card {
+  background: var(--zakki-card) !important;
+  border: 1px solid var(--zakki-border);
+  color: var(--zakki-text);
+}
+
+.post-card:hover {
+  border-color: var(--zakki-header);
+}
+
+.post-card h3 a {
+  color: var(--zakki-text);
+}
+
+.post-card h3 a:hover {
+  color: var(--zakki-link);
+}
+
+.post-card-meta,
+.post-card-meta a {
+  color: var(--zakki-muted);
+}
+
+.post-card-description {
+  color: var(--zakki-text);
+}
+
+.post-card-tags span {
+  background: #3a4650;
+  color: #d7e1e8;
+}
+
+/* サイドバー */
+.sidebar-box {
+  background: transparent !important;
+  border: none;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-box p,
+.sidebar-box li,
+.sidebar-box a {
+  color: var(--zakki-text);
+}
+
+.sidebar-box a:hover {
+  color: var(--zakki-link);
+}
+
+.sidebar-box li {
+  border-bottom-color: rgba(120, 181, 181, 0.18);
+}
+
+.sidebar-tags a {
+  background: #3a4650;
+  color: #d7e1e8;
+}
+
+/* 一覧ページ */
+article h2 + ul,
+article h3 + ul,
+article h1 + ul,
+article p + ul {
+  background: var(--zakki-card) !important;
+  border-color: var(--zakki-border);
+}
+
+/* 記事本文 */
+article {
+  color: var(--zakki-text);
+}
+
+article p,
+article li {
+  color: var(--zakki-text);
+}
+
+article a {
+  color: var(--zakki-link);
+}
+
+article blockquote {
+  background: #303741;
+  border-left-color: var(--zakki-header);
+  color: #d7e1e8;
+}
+
+article pre {
+  border: 1px solid var(--zakki-border);
+}
+
+/* Graphカード */
+.right.sidebar > * {
+  background: transparent !important;
+  border: none;
+}
+
+/* ==============================
+   Sidebar boxes stronger
+   ============================== */
+
+.home-sidebar .sidebar-box {
+  background: var(--zakki-card) !important;
+  border: 1px solid var(--zakki-border) !important;
+  border-radius: 6px !important;
+  padding: 1rem 1.05rem !important;
+}
+
+/* 見出しの横線は少し強め */
+.home-sidebar .sidebar-box h2::after,
+.home-sidebar .sidebar-box h3::after {
+  background: var(--zakki-header);
+  opacity: 1;
+}
+
+/* ボックス内リストも少し見やすく */
+.home-sidebar .sidebar-box li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(120, 181, 181, 0.22);
+}
+
+/* タグ欄の余白 */
+.home-sidebar .sidebar-tags {
+  padding-top: 0.2rem;
+}
+
+/* アーカイブなどの単独リンク */
+.home-sidebar .sidebar-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Sidebar afterimg-like simple style
+   ============================== */
+
+/* 右カラム全体 */
+.home-sidebar {
+  gap: 2.2rem;
+}
+
+/* 各ウィジェットの枠を消す */
+.home-sidebar .sidebar-box {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 見出し：文字 + 横線 */
+.home-sidebar .sidebar-box h2,
+.home-sidebar .sidebar-box h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  border: none !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--zakki-text);
+  text-transform: uppercase;
+}
+
+.home-sidebar .sidebar-box h2::after,
+.home-sidebar .sidebar-box h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--zakki-header);
+  opacity: 0.9;
+}
+
+/* 本文 */
+.home-sidebar .sidebar-box p {
+  margin: 0 0 0.65rem;
+  color: var(--zakki-text);
+  line-height: 1.7;
+}
+
+/* リストも枠なし */
+.home-sidebar .sidebar-box ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-sidebar .sidebar-box li {
+  padding: 0.25rem 0;
+  border-bottom: none !important;
+  color: var(--zakki-text);
+}
+
+/* リンク */
+.home-sidebar .sidebar-box a {
+  color: var(--zakki-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.home-sidebar .sidebar-box a:hover {
+  color: var(--zakki-link);
+  text-decoration: none;
+}
+
+/* タグだけ小さなラベル風に残す */
+.home-sidebar .sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.home-sidebar .sidebar-tags a {
+  display: inline-block;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  background: #3a4650;
+  color: #d7e1e8;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Graph View側も枠なしに寄せる */
+.right.sidebar > * {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Graph Viewのキャンバスだけは薄く枠を残す */
+.right.sidebar canvas,
+.right.sidebar .graph {
+  border-color: var(--zakki-border);
+}
+
+/* ==============================
+   Sidebar afterimg-like content refine
+   ============================== */
+
+/* 右カラム全体の間隔 */
+.home-sidebar {
+  gap: 2.35rem;
+}
+
+/* ウィジェットは枠なし */
+.home-sidebar .sidebar-box {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* h3 + ul に以前のカード風CSSが当たるのを解除 */
+.home-sidebar .sidebar-box h3 + ul,
+.home-sidebar .sidebar-box h2 + ul,
+.home-sidebar .sidebar-box p + ul {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* 見出し：afterimg風 */
+.home-sidebar .sidebar-box h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  border: none !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--zakki-text);
+  text-transform: uppercase;
+}
+
+.home-sidebar .sidebar-box h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--zakki-header);
+  opacity: 0.9;
+}
+
+/* サイドバー本文は少し軽め */
+.home-sidebar .sidebar-box p {
+  margin: 0 0 0.65rem;
+  font-size: 0.86rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--zakki-muted);
+}
+
+/* サイドバーリンク */
+.home-sidebar .sidebar-box a {
+  color: var(--zakki-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.home-sidebar .sidebar-box a:hover {
+  color: var(--zakki-link);
+  text-decoration: none;
+}
+
+/* アーカイブ */
+.home-sidebar .sidebar-archive-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-sidebar .sidebar-archive-list li {
+  margin: 0 0 0.45rem;
+  padding: 0;
+  border: none !important;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--zakki-text);
+}
+
+/* サイドバー記事 */
+.sidebar-post {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+  margin-bottom: 1.05rem;
+}
+
+.sidebar-popular-post {
+  grid-template-columns: 1fr;
+}
+
+.sidebar-post img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.sidebar-popular-post img {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 0.65rem;
+}
+
+.sidebar-post h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--zakki-text);
+}
+
+.sidebar-post h4 a {
+  color: var(--zakki-text);
+}
+
+.sidebar-post h4 a:hover {
+  color: var(--zakki-link);
+}
+
+.sidebar-post p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--zakki-muted);
+}
+
+/* タグは小さめラベル */
+.home-sidebar .sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.home-sidebar .sidebar-tags a {
+  display: inline-block;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  background: #3a4650;
+  color: #d7e1e8;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* ABOUTの本文だけ少し読みやすく */
+.home-sidebar .sidebar-about p {
+  color: var(--zakki-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* スマホ調整 */
+@media all and (max-width: 900px) {
+  .sidebar-post,
+  .sidebar-popular-post {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .sidebar-popular-post img {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0;
+  }
+}
+
+/* ==============================
+   Sidebar category / archive refine
+   ============================== */
+
+/* カテゴリーとアーカイブのリストを枠なしにする */
+.home-sidebar .sidebar-category-list,
+.home-sidebar .sidebar-archive-list {
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* カテゴリーとアーカイブの各行 */
+.home-sidebar .sidebar-category-list li,
+.home-sidebar .sidebar-archive-list li {
+  margin: 0 0 0.45rem;
+  padding: 0 !important;
+  border: none !important;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--zakki-text);
+}
+
+/* カテゴリー名は少し太め */
+.home-sidebar .sidebar-category-list a,
+.home-sidebar .sidebar-archive-list a {
+  font-weight: 700;
+  color: var(--zakki-text);
+  text-decoration: none;
+}
+
+/* 件数や補助文字がある場合は自然に見せる */
+.home-sidebar .sidebar-archive-list li {
+  font-weight: 700;
+}
+
+/* ホバー */
+.home-sidebar .sidebar-category-list a:hover,
+.home-sidebar .sidebar-archive-list a:hover {
+  color: var(--zakki-link);
+  text-decoration: none;
+}
+
+/* 以前のsidebar-post系が残っていても邪魔しない */
+.sidebar-post,
+.sidebar-popular-post {
+  margin: 0;
+}

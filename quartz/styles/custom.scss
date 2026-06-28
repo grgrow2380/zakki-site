@@ -1707,3 +1707,44 @@ article h4 {
     margin-top: 0.5rem;
   }
 }
+
+/* ==============================
+   Footer afterimg-like refine
+   ============================== */
+
+footer {
+  max-width: 1120px;
+  margin: 3.5rem auto 0;
+  padding: 1.8rem 0 2.2rem;
+  border-top: 1px solid rgba(120, 181, 181, 0.45);
+  color: var(--zakki-muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* フッター内テキスト */
+footer p {
+  margin: 0.35rem 0;
+  color: var(--zakki-muted);
+}
+
+/* フッター内リンク */
+footer a {
+  color: var(--zakki-muted);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+footer a:hover {
+  color: #e58a3a;
+  text-decoration: none;
+}
+
+/* スマホ */
+@media all and (max-width: 900px) {
+  footer {
+    margin-top: 2.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

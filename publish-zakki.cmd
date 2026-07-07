@@ -1,5 +1,5 @@
 @echo off
-cd /d C:\Users\user\Documents\Projects\zakki-site
+cd /d C:\Users\grgro\Documents\Projects\zakki-site
 
 echo ========================================
 echo zakki publish start

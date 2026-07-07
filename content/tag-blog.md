@@ -1,5 +1,6 @@
 ---
-title: Python
+title: blog
+generatedBy: zakki-tag-pages
 
 ---
 
@@ -20,8 +21,18 @@ title: Python
 
 <main class="blog-main">
 <section class="post-list-section">
-<h1>Python</h1>
-<p class="empty-message">まだ記事がありません。</p>
+<h1>#blog</h1>
+<p class="page-lead">blog タグの記事一覧です。</p>
+<ul class="post-link-list">
+<li>
+  <a href="./posts/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE%E6%8A%95%E7%A8%BF">はじめての投稿</a>
+  <span>2026-06-28 / Blog</span>
+</li>
+<li>
+  <a href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">記事内フッターテスト記事</a>
+  <span>2026-06-28 / Blog</span>
+</li>
+</ul>
 </section>
 </main>
 

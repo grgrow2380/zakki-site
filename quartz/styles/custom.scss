@@ -1,352 +1,28 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
-/* ==============================
-   zakki custom blog style
-   ============================== */
-
-/* 全体の読みやすさ */
-.page {
-  line-height: 1.85;
-}
-
-/* ==============================
-   Post cards
-   ============================== */
-
-/* Latest Posts周り */
-.home-main h2 {
-  margin-bottom: 1.2rem;
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-/* 記事カード全体 */
-.post-card {
-  margin: 0 0 1.8rem;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid var(--lightgray);
-  border-radius: 8px;
-  background: var(--light);
-  box-shadow: none;
-}
-
-/* カード内の画像 */
-.post-card-image-link {
-  display: block;
-  margin: 0;
-  border-radius: 0;
-  background: var(--lightgray);
-}
-
-.post-card-image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-/* カード内の本文エリア */
-.post-card h3,
-.post-card-meta,
-.post-card-description {
-  margin-left: 1.15rem;
-  margin-right: 1.15rem;
-}
-
-/* タイトル */
-.post-card h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.35rem;
-  font-size: 1.35rem;
-  line-height: 1.45;
-  font-weight: 700;
-}
-
-.post-card h3 a {
-  color: var(--dark);
-  text-decoration: none;
-}
-
-.post-card h3 a:hover {
-  color: var(--secondary);
-  text-decoration: none;
-}
-
-/* 日付・カテゴリ */
-.post-card-meta {
-  margin-bottom: 0.8rem;
-  font-size: 0.85rem;
-  color: var(--gray);
-}
-
-.post-card-meta a {
-  color: var(--gray);
-  text-decoration: none;
-}
-
-.post-card-meta a:hover {
-  color: var(--secondary);
-  text-decoration: underline;
-}
-
-/* 説明文 */
-.post-card-description {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  line-height: 1.75;
-  color: var(--darkgray);
-}
-
-/* ホバーは控えめに */
-.post-card:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: var(--gray);
-}
-
-/* スマホ調整 */
-@media all and (max-width: 800px) {
-  .post-card h3 {
-    font-size: 1.18rem;
-  }
-
-  .post-card h3,
-  .post-card-meta,
-  .post-card-description {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-}
-
-/* ==============================
-   Article pages
-   ============================== */
-
-/* 記事本文の読みやすさ */
-article {
-  line-height: 1.85;
-  font-size: 1rem;
-}
-
-/* 記事ページの本文幅を少し読みやすく */
-article > * {
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 画像は少し広く使えるように */
-article img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 1.8rem auto;
-  border-radius: 8px;
-}
-
-/* 大きな画像を含む段落 */
-article p:has(img) {
-  max-width: 920px;
-}
-
-/* 見出し */
-article h1,
-article h2,
-article h3,
-article h4 {
-  line-height: 1.45;
-  color: var(--dark);
-}
-
-article h1 {
-  margin-top: 0;
-  margin-bottom: 1.2rem;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-}
-
-article h2 {
-  margin-top: 2.6rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid var(--lightgray);
-  font-size: 1.55rem;
-}
-
-article h3 {
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-}
-
-/* 段落 */
-article p {
-  margin-top: 0;
-  margin-bottom: 1.15rem;
-}
-
-/* 箇条書き */
-article ul,
-article ol {
-  padding-left: 1.5rem;
-  margin-top: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-/* 引用 */
-article blockquote {
-  margin-top: 1.6rem;
-  margin-bottom: 1.6rem;
-  padding: 0.9rem 1.1rem;
-  border-left: 4px solid var(--secondary);
-  background: color-mix(in srgb, var(--lightgray) 45%, transparent);
-  color: var(--darkgray);
-}
-
-/* コードブロック */
-article pre {
-  max-width: 920px;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-}
-
-/* インラインコード */
-article code {
-  font-size: 0.92em;
-}
-
-/* 区切り線 */
-article hr {
-  max-width: 760px;
-  margin: 2.2rem auto;
-  border: none;
-  border-top: 1px solid var(--lightgray);
-}
-
-/* 記事ページ内リンク */
-article a {
-  text-underline-offset: 0.18em;
-}
-
-/* スマホ調整 */
-@media all and (max-width: 800px) {
-  article {
-    font-size: 0.98rem;
-    line-height: 1.8;
-  }
-
-  article > *,
-  article p:has(img),
-  article pre {
-    max-width: 100%;
-  }
-
-  article h2 {
-    font-size: 1.35rem;
-  }
-
-  article h3 {
-    font-size: 1.15rem;
-  }
-}
-
-/* ==============================
-   List pages
-   ============================== */
-
-/* カテゴリ・タグ・アーカイブなどの一覧ページ */
-article h1:first-child {
-  margin-bottom: 1.2rem;
-}
-
-/* 一覧ページの説明文 */
-article > p:first-of-type {
-  color: var(--darkgray);
-  line-height: 1.8;
-}
-
-/* Markdownで生成される記事一覧 */
-article ul {
-  margin-top: 1rem;
-}
-
-/* 一覧ページのリスト項目 */
-article li {
-  margin-bottom: 0.45rem;
-  line-height: 1.7;
-}
-
-/* 一覧ページ内リンク */
-article li a {
-  font-weight: 600;
-  text-decoration: none;
-}
-
-article li a:hover {
-  text-decoration: underline;
-}
-
-/* タグ一覧・サイトマップなどを少しカード風に */
-article h2 + ul,
-article h3 + ul {
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--lightgray);
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--light) 88%, var(--lightgray));
-}
-
-/* Archiveページの月別見出し */
-article h2 {
-  scroll-margin-top: 2rem;
-}
-
-/* Sitemapなどの長い一覧の余白 */
-article h1 + ul,
-article p + ul {
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--lightgray);
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--light) 88%, var(--lightgray));
-}
-
-/* リスト中の日付や件数が読みやすいように */
-article li {
-  color: var(--darkgray);
-}
-
-article li a {
-  color: var(--dark);
-}
-
-/* スマホ調整 */
-@media all and (max-width: 800px) {
-  article h2 + ul,
-  article h3 + ul,
-  article h1 + ul,
-  article p + ul {
-    padding: 0.85rem 1rem;
-  }
-}
-
-/* ==============================
-   Theme variables and base colors
-   ============================== */
-
 :root {
-  --zakki-bg: #262c34;
-  --zakki-card: #303741;
-  --zakki-card-2: #2b323b;
-  --zakki-header: #78b5b5;
-  --zakki-border: #526b76;
+  --zakki-bg: #20242a;
+  --zakki-surface: #2a3037;
+  --zakki-surface-soft: #303841;
+  --zakki-header: #8bc9bd;
+  --zakki-accent: #e58a3a;
+  --zakki-border: rgba(139, 201, 189, 0.28);
+  --zakki-border-strong: rgba(139, 201, 189, 0.55);
   --zakki-text: #f4f7f8;
-  --zakki-muted: #8b98a3;
-  --zakki-link: #8fcfd0;
+  --zakki-muted: #a8b4bc;
+  --zakki-dim: #7f8b95;
+  --zakki-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  --zakki-width: 1040px;
+  --zakki-header-width: 1040px;
+  --zakki-main-width: 700px;
+  --zakki-sidebar-width: 300px;
+  --zakki-column-gap: 2.5rem;
 }
 
-/* 全体背景 */
+html {
+  scroll-padding-top: 6.5rem;
+}
+
 body,
 .page,
 .center,
@@ -355,989 +31,724 @@ article {
   color: var(--zakki-text);
 }
 
-/* 上部ヘッダー */
+body {
+  overflow-x: hidden;
+}
+
+.page {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-top: 7.4rem !important;
+}
+
+footer,
+.left.sidebar,
+.right.sidebar,
+.center > hr,
+.page-footer {
+  display: none !important;
+}
+
+.page > #quartz-body {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.page > #quartz-body .page-header {
+  display: none !important;
+}
+
+.page > #quartz-body .center {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.page > #quartz-body .center > article {
+  width: 100% !important;
+}
+
+a {
+  color: var(--zakki-header);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--zakki-accent);
+}
+
+.page article {
+  line-height: 1.85;
+}
+
+.page article:has(> .blog-header),
+.page article:has(> .blog-layout),
+.page article:has(> .blog-sidebar) {
+  box-sizing: border-box !important;
+  max-width: none !important;
+  padding: 0 1.5rem 4rem !important;
+}
+
+.page article:not(:has(> .blog-layout)):not(:has(> .blog-sidebar)):not(:has(> .markdown-rendered > .blog-layout)):not(:has(> .markdown-rendered > .blog-sidebar)) > * {
+  max-width: var(--zakki-main-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
 .blog-header {
-  background: var(--zakki-header);
-  border-bottom: none;
-  margin-bottom: 2.4rem;
-  padding-top: 1.7rem;
-  padding-bottom: 1.4rem;
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  z-index: 9999 !important;
+  width: 100vw !important;
+  min-height: 5rem;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 1.15rem 0 !important;
+  display: grid !important;
+  grid-template-columns:
+    minmax(1.5rem, 1fr)
+    minmax(0, var(--zakki-header-width))
+    minmax(1.5rem, 1fr) !important;
+  align-items: center !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 90%),
+    var(--zakki-header);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
 }
 
 .blog-title {
-  color: #4f5f62;
-  font-size: 1.35rem;
-  text-align: left;
-  max-width: 1320px;
-  margin: 0 auto;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  justify-self: start !important;
+  margin: 0 !important;
+  color: #405254;
+  font-size: 1.32rem;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-.blog-description {
-  color: #4f5f62;
+.blog-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.blog-title a:hover {
+  color: var(--zakki-accent) !important;
 }
 
 .blog-nav {
-  max-width: 1320px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: flex-end;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  justify-self: end !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.45rem;
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.2;
 }
 
 .blog-nav a {
-  color: #4f5f62;
-  font-weight: 600;
+  position: relative;
+  color: #405254;
+  font-weight: 800;
+  text-decoration: none !important;
+  text-transform: lowercase;
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.blog-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 2px;
+  background: var(--zakki-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s ease;
 }
 
 .blog-nav a:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #2f3b3e;
+  color: #243134 !important;
+  transform: translateY(-1px);
 }
 
-/* 見出しをafterimg風の横線付きに */
-.home-main h2,
-.sidebar-box h3,
-.sidebar-box h2,
-article h2 {
+.blog-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Shared layout */
+.blog-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, var(--zakki-main-width)) var(--zakki-sidebar-width);
+  column-gap: var(--zakki-column-gap);
+  row-gap: 0;
+  align-items: start;
+  width: min(100%, var(--zakki-width));
+  margin: 0 auto;
+}
+
+.blog-main {
+  min-width: 0;
+}
+
+.blog-sidebar {
+  box-sizing: border-box;
+  min-width: 0;
+  padding-left: 1.8rem;
+  border-left: 1px solid var(--zakki-border-strong);
+  position: sticky;
+  top: 7rem;
+}
+
+.page article:has(> .blog-sidebar) {
+  display: grid !important;
+  grid-template-columns: minmax(0, var(--zakki-main-width)) var(--zakki-sidebar-width) !important;
+  column-gap: var(--zakki-column-gap) !important;
+  row-gap: 0 !important;
+  align-items: start !important;
+  width: min(100%, var(--zakki-width));
+  margin: 0 auto !important;
+}
+
+.page article:has(> .blog-sidebar) > .blog-header {
+  grid-column: 1 / -1;
+}
+
+.page article:has(> .blog-sidebar) > .blog-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.page article:has(> .blog-sidebar) > :not(.blog-header):not(.blog-sidebar) {
+  grid-column: 1;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Quartz wraps generated fixed pages in .markdown-rendered. */
+.page article:has(> .markdown-rendered > .blog-layout) {
+  box-sizing: border-box !important;
+  max-width: none !important;
+  padding: 0 1.5rem 4rem !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-layout) {
+  width: min(100%, var(--zakki-width));
+  max-width: min(100%, var(--zakki-width)) !important;
+  margin: 0 auto !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-layout) > .blog-header {
+  width: 100vw !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-layout) > .blog-layout,
+.page article > .markdown-rendered:has(> .blog-layout) > .blog-footer {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Quartz wraps Markdown content in .markdown-rendered on article/About pages. */
+.page article:has(> .markdown-rendered > .blog-sidebar) {
+  box-sizing: border-box !important;
+  max-width: none !important;
+  padding: 0 1.5rem 4rem !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-sidebar) {
+  display: block !important;
+  width: min(100%, var(--zakki-width));
+  max-width: min(100%, var(--zakki-width)) !important;
+  margin: 0 auto !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-sidebar) > .blog-header {
+  width: 100vw !important;
+}
+
+.page article > .markdown-rendered:has(> .blog-sidebar) > .blog-sidebar {
+  float: right;
+  width: var(--zakki-sidebar-width);
+  margin: 0 0 2rem var(--zakki-column-gap);
+}
+
+.page article > .markdown-rendered:has(> .blog-sidebar) > :not(.blog-header):not(.blog-sidebar):not(.blog-footer) {
+  width: min(100%, calc(100% - var(--zakki-sidebar-width) - var(--zakki-column-gap)));
+  max-width: var(--zakki-main-width) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+h1 > a[role="anchor"],
+h2 > a[role="anchor"],
+h3 > a[role="anchor"],
+h4 > a[role="anchor"],
+h5 > a[role="anchor"],
+h6 > a[role="anchor"],
+.anchor,
+.heading-anchor {
+  display: none !important;
+}
+
+/* Section headings */
+.post-list-section > h1,
+.archive-group > h2,
+.blog-main h1,
+.blog-main h2,
+.blog-sidebar .sidebar-box h3,
+.page article:has(> .blog-sidebar) > h1,
+.page article:has(> .blog-sidebar) > h2,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h1,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h2 {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  border-bottom: none;
+  gap: 0.65rem;
+  margin: 0 0 1.45rem;
   color: var(--zakki-text);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
-.home-main h2::after,
-.sidebar-box h3::after,
-.sidebar-box h2::after,
-article h2::after {
+.post-list-section > h1::after,
+.archive-group > h2::after,
+.blog-main h1::after,
+.blog-main h2::after,
+.blog-sidebar .sidebar-box h3::after,
+.page article:has(> .blog-sidebar) > h2::after,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h2::after {
   content: "";
   flex: 1;
   height: 1px;
   background: var(--zakki-header);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* 記事カード */
-.post-card {
-  background: var(--zakki-card) !important;
+.page article:has(> .blog-sidebar) > h1,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h1 {
+  margin-top: 0;
+  margin-bottom: 0.28rem;
+  font-size: 1.65rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.page article:has(> .blog-sidebar) > h1::after,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h1::after {
+  content: none;
+}
+
+.post-title-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  align-items: center;
+  margin: 0 0 1.25rem !important;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--zakki-border);
+  color: var(--zakki-dim);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.post-title-meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.post-title-meta span + span::before {
+  content: "/";
+  margin-right: 0.8rem;
+  color: rgba(168, 180, 188, 0.55);
+  font-weight: 600;
+}
+
+.post-hero-image {
+  margin: 0 0 1.65rem !important;
+}
+
+.post-hero-image img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 22vw, 260px);
+  object-fit: cover;
+  object-position: center center;
+  margin: 0 !important;
   border: 1px solid var(--zakki-border);
+  border-radius: 8px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.post-title-meta + p,
+.post-hero-image + p {
+  margin-top: 0 !important;
+}
+
+/* Post cards */
+.post-list-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem;
+  align-items: stretch;
+}
+
+.post-list-section > h1,
+.post-list-section > .page-lead,
+.post-list-section > .empty-message,
+.post-list-section > .archive-group,
+.post-list-section > .post-link-list {
+  grid-column: 1 / -1;
+}
+
+.post-list-section > h1 {
+  margin-bottom: 0;
+}
+
+.post-card {
+  overflow: hidden;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  border: 1px solid var(--zakki-border);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 42%),
+    var(--zakki-surface);
   color: var(--zakki-text);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .post-card:hover {
-  border-color: var(--zakki-header);
+  transform: translateY(-3px);
+  border-color: var(--zakki-border-strong);
+  box-shadow: var(--zakki-shadow);
+}
+
+.post-card-image-link {
+  display: block;
+  background: #1b1f24;
+}
+
+.post-card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.post-card:hover .post-card-image {
+  transform: scale(1.025);
+}
+
+.post-card-body {
+  padding: 1.1rem 1.2rem 1.25rem;
+}
+
+.post-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.28rem;
+  line-height: 1.45;
 }
 
 .post-card h3 a {
   color: var(--zakki-text);
+  text-decoration: none !important;
 }
 
 .post-card h3 a:hover {
-  color: var(--zakki-link);
+  color: var(--zakki-header);
 }
 
-.post-card-meta,
-.post-card-meta a {
-  color: var(--zakki-muted);
-}
-
-.post-card-description {
-  color: var(--zakki-text);
-}
-
-.post-card-tags span {
-  background: #3a4650;
-  color: #d7e1e8;
-}
-
-/* 一覧ページ */
-article h2 + ul,
-article h3 + ul,
-article h1 + ul,
-article p + ul {
-  background: var(--zakki-card) !important;
-  border-color: var(--zakki-border);
-}
-
-/* 記事本文 */
-article {
-  color: var(--zakki-text);
-}
-
-article p,
-article li {
-  color: var(--zakki-text);
-}
-
-article a {
-  color: var(--zakki-link);
-}
-
-article blockquote {
-  background: #303741;
-  border-left-color: var(--zakki-header);
-  color: #d7e1e8;
-}
-
-article pre {
-  border: 1px solid var(--zakki-border);
-}
-
-/* Graphカード */
-.right.sidebar > * {
-  background: transparent !important;
-  border: none;
-}
-
-/* ==============================
-   Sidebar layout
-   ============================== */
-
-/* 右カラム全体 */
-.home-sidebar {
-  gap: 2.2rem;
-}
-
-/* 各ウィジェットの枠を消す */
-.home-sidebar .sidebar-box {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 見出し：文字 + 横線 */
-.home-sidebar .sidebar-box h2,
-.home-sidebar .sidebar-box h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0 0 1rem;
-  padding: 0;
-  border: none !important;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--zakki-text);
-  text-transform: uppercase;
-}
-
-.home-sidebar .sidebar-box h2::after,
-.home-sidebar .sidebar-box h3::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--zakki-header);
-  opacity: 0.9;
-}
-
-/* 本文 */
-.home-sidebar .sidebar-box p {
-  margin: 0 0 0.65rem;
-  color: var(--zakki-text);
-  line-height: 1.7;
-}
-
-/* リストも枠なし */
-.home-sidebar .sidebar-box ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-sidebar .sidebar-box li {
-  padding: 0.25rem 0;
-  border-bottom: none !important;
-  color: var(--zakki-text);
-}
-
-/* リンク */
-.home-sidebar .sidebar-box a {
-  color: var(--zakki-text);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.home-sidebar .sidebar-box a:hover {
-  color: var(--zakki-link);
-  text-decoration: none;
-}
-
-/* Graph View側も枠なしに寄せる */
-.right.sidebar > * {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Graph Viewのキャンバスだけは薄く枠を残す */
-.right.sidebar canvas,
-.right.sidebar .graph {
-  border-color: var(--zakki-border);
-}
-
-/* ==============================
-   Sidebar content
-   ============================== */
-
-/* 右カラム全体の間隔 */
-.home-sidebar {
-  gap: 2.35rem;
-}
-
-/* ウィジェットは枠なし */
-.home-sidebar .sidebar-box {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-/* h3 + ul に以前のカード風CSSが当たるのを解除 */
-.home-sidebar .sidebar-box h3 + ul,
-.home-sidebar .sidebar-box h2 + ul,
-.home-sidebar .sidebar-box p + ul {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-}
-
-/* 見出し：afterimg風 */
-.home-sidebar .sidebar-box h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0 0 1.15rem;
-  padding: 0;
-  border: none !important;
-  font-size: 0.88rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  color: var(--zakki-text);
-  text-transform: uppercase;
-}
-
-.home-sidebar .sidebar-box h3::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--zakki-header);
-  opacity: 0.9;
-}
-
-/* サイドバー本文は少し軽め */
-.home-sidebar .sidebar-box p {
-  margin: 0 0 0.65rem;
-  font-size: 0.86rem;
-  line-height: 1.7;
-  font-weight: 400;
-  color: var(--zakki-muted);
-}
-
-/* サイドバーリンク */
-.home-sidebar .sidebar-box a {
-  color: var(--zakki-text);
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.home-sidebar .sidebar-box a:hover {
-  color: var(--zakki-link);
-  text-decoration: none;
-}
-
-/* アーカイブ */
-.home-sidebar .sidebar-archive-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-sidebar .sidebar-archive-list li {
-  margin: 0 0 0.45rem;
-  padding: 0;
-  border: none !important;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--zakki-text);
-}
-
-/* ABOUTの本文だけ少し読みやすく */
-.home-sidebar .sidebar-about p {
-  color: var(--zakki-text);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* ==============================
-   Sidebar category and archive
-   ============================== */
-
-/* カテゴリーとアーカイブのリストを枠なしにする */
-.home-sidebar .sidebar-category-list,
-.home-sidebar .sidebar-archive-list {
-  margin: 0;
-  padding: 0 !important;
-  list-style: none;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-}
-
-/* カテゴリーとアーカイブの各行 */
-.home-sidebar .sidebar-category-list li,
-.home-sidebar .sidebar-archive-list li {
-  margin: 0 0 0.45rem;
-  padding: 0 !important;
-  border: none !important;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--zakki-text);
-}
-
-/* カテゴリー名は少し太め */
-.home-sidebar .sidebar-category-list a,
-.home-sidebar .sidebar-archive-list a {
-  font-weight: 700;
-  color: var(--zakki-text);
-  text-decoration: none;
-}
-
-/* 件数や補助文字がある場合は自然に見せる */
-.home-sidebar .sidebar-archive-list li {
-  font-weight: 700;
-}
-
-/* ホバー */
-.home-sidebar .sidebar-category-list a:hover,
-.home-sidebar .sidebar-archive-list a:hover {
-  color: var(--zakki-link);
-  text-decoration: none;
-}
-
-/* ==============================
-   Header layout and sticky
-   ============================== */
-
-/* ヘッダー全体を細めにして、スクロールしても上部固定 */
-.blog-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: 2rem;
-
-  max-width: none;
-  margin: 0 0 2.6rem;
-  padding: 1.05rem 2.2rem;
-
-  background: var(--zakki-header);
-  border-bottom: none;
-  text-align: left;
-}
-
-/* 固定ヘッダーの下に薄い影をつけて、本文との境目を分かりやすく */
-.blog-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-}
-
-/* タイトル */
-.blog-title {
-  max-width: none;
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: #4c5d60;
-}
-
-/* 説明文は非表示 */
-.blog-description {
-  display: none;
-}
-
-/* ナビ */
-.blog-nav {
-  max-width: none;
-  justify-content: flex-end;
-  margin: 0;
-  gap: 1.1rem;
-  font-size: 0.86rem;
-  line-height: 1.2;
-}
-
-/* ナビリンク */
-.blog-nav a {
-  padding: 0;
-  border-radius: 0;
-  color: #4c5d60;
-  font-weight: 600;
-  text-transform: lowercase;
-}
-
-.blog-nav a:hover {
-  background: transparent;
-  color: #2f3b3e;
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-}
-
-/* 見出しリンクへ飛んだ時、固定ヘッダーに隠れないようにする */
-article h1,
-article h2,
-article h3,
-article h4 {
-  scroll-margin-top: 5rem;
-}
-
-/* スマホでは縦並び */
-@media all and (max-width: 800px) {
-  .blog-header {
-    grid-template-columns: 1fr;
-    row-gap: 0.8rem;
-    padding: 1rem 1.2rem;
-  }
-
-  .blog-nav {
-    justify-content: flex-start;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-  }
-}
-
-/* ==============================
-   Header link adjustments
-   ============================== */
-
-/* ヘッダーの縦幅を少し太くする */
-.blog-header {
-  padding-top: 1.35rem !important;
-  padding-bottom: 1.35rem !important;
-}
-
-/* ナビリンクの通常状態 */
-.blog-nav a {
-  color: #4c5d60;
-  text-decoration: none !important;
-  transition: color 0.18s ease;
-}
-
-/* マウスオーバー時：下線ではなくオレンジに変化 */
-.blog-nav a:hover {
-  color: #e58a3a !important;
-  background: transparent !important;
-  text-decoration: none !important;
-}
-
-/* スマホ時も少し余裕を持たせる */
-@media all and (max-width: 800px) {
-  .blog-header {
-    padding-top: 1.2rem !important;
-    padding-bottom: 1.2rem !important;
-  }
-}
-
-/* ==============================
-   Home layout refine
-   ============================== */
-
-/* トップページ全体の横幅 */
-.home-layout {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 300px !important;
-  gap: 3rem !important;
-  max-width: 1120px;
-  margin: 0 auto;
-  align-items: start;
-}
-
-/* 左カラム */
-.home-main {
-  min-width: 0;
-}
-
-/* 右カラム */
-.home-sidebar {
-  min-width: 0;
-}
-
-/* Latest Posts見出し */
-.home-main h2 {
-  margin: 0 0 1.4rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-/* 記事カード間の余白 */
-.post-card {
-  margin-bottom: 2.2rem;
-}
-
-/* 記事カードの枠線を少し控えめに */
-.post-card {
-  border-color: rgba(120, 181, 181, 0.35);
-}
-
-/* 記事タイトルを少しだけ締める */
-.post-card h3 {
-  font-size: 1.25rem;
-  line-height: 1.45;
-}
-
-/* 記事説明文を少し控えめに */
-.post-card-description {
-  font-size: 0.95rem;
-  line-height: 1.75;
-}
-
-/* 日付・カテゴリ */
 .post-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+  color: var(--zakki-dim);
   font-size: 0.8rem;
 }
 
-/* スマホでは1カラム */
-@media all and (max-width: 900px) {
-  .home-layout {
-    grid-template-columns: 1fr !important;
-    gap: 2.2rem !important;
-    max-width: 100%;
-  }
-
-  .home-sidebar {
-    margin-top: 0.5rem;
-  }
-}
-
-/* ==============================
-   Footer
-   ============================== */
-
-footer {
-  max-width: 1120px;
-  margin: 3.5rem auto 0;
-  padding: 1.8rem 0 2.2rem;
-  border-top: 1px solid rgba(120, 181, 181, 0.45);
-  color: var(--zakki-muted);
-  font-size: 0.82rem;
-  text-align: center;
-}
-
-/* フッター内テキスト */
-footer p {
-  margin: 0.35rem 0;
-  color: var(--zakki-muted);
-}
-
-/* フッター内リンク */
-footer a {
-  color: var(--zakki-muted);
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-footer a:hover {
-  color: #e58a3a;
-  text-decoration: none;
-}
-
-/* スマホ */
-@media all and (max-width: 900px) {
-  footer {
-    margin-top: 2.8rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* ==============================
-   Post card without image
-   ============================== */
-
-.post-card-no-image {
-  padding-top: 1.1rem;
-  border-top: 3px solid var(--zakki-header);
-}
-
-.post-card-no-image h3 {
-  margin-top: 0;
-  font-size: 1.35rem;
-}
-
-.post-card-no-image h3,
-.post-card-no-image .post-card-meta,
-.post-card-no-image .post-card-description,
-.post-card-no-image .post-card-tags {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
-
-.post-card-no-image .post-card-description {
-  color: #d7e1e8;
-}
-
-.post-card-no-image .post-card-tags {
-  margin-bottom: 1.25rem;
-}
-
-/* ==============================
-   Post card hover border
-   ============================== */
-
-/* 通常カード・画像なしカードともにホバー時の枠線を均一にする */
-.post-card:hover,
-.post-card-no-image:hover {
-  border: 1px solid var(--zakki-header) !important;
-}
-
-/* 画像なしカードの通常時も上下左右を同じ指定にする */
-.post-card-no-image {
-  border: 1px solid rgba(120, 181, 181, 0.35) !important;
-}
-
-/* ==============================
-   Hide anchor icons in post cards
-   ============================== */
-
-/* トップページの記事カード内だけ、見出し横のアンカーアイコンを非表示 */
-.post-card .anchor,
-.post-card a.anchor,
-.post-card .heading-anchor,
-.post-card a.heading-anchor,
-.post-card h1 > a[aria-hidden="true"],
-.post-card h2 > a[aria-hidden="true"],
-.post-card h3 > a[aria-hidden="true"],
-.post-card h4 > a[aria-hidden="true"] {
-  display: none !important;
-}
-
-/* ==============================
-   Post card metadata
-   ============================== */
-
-/* 日付・カテゴリの行 */
-.post-card-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.9rem;
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--zakki-muted);
-}
-
-/* メタ情報内リンク */
 .post-card-meta a {
+  padding: 0.05rem 0.38rem;
+  border-radius: 4px;
+  background: rgba(139, 201, 189, 0.12);
   color: var(--zakki-muted);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.18s ease;
+  font-weight: 700;
+  text-decoration: none !important;
 }
 
 .post-card-meta a:hover {
-  color: #e58a3a;
-  text-decoration: none;
+  background: rgba(229, 138, 58, 0.16);
+  color: var(--zakki-accent);
 }
 
-/* カテゴリだけ小さなラベル風に */
-.post-card-meta a {
-  padding: 0.05rem 0.35rem;
-  border-radius: 4px;
-  background: rgba(120, 181, 181, 0.12);
+.post-card-description {
+  display: -webkit-box;
+  margin: 0 0 0.65rem;
+  color: #dde6eb;
+  font-size: 0.96rem;
+  line-height: 1.75;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 
-/* 日付部分を少し控えめに */
-.post-card-meta {
-  opacity: 0.9;
-}
-
-/* タイトルとの距離を微調整 */
-.post-card h3 {
-  margin-bottom: 0.45rem;
-}
-
-/* ==============================
-   Tags
-   ============================== */
-
-/* 記事カード内タグ */
-.post-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.9rem;
-}
-
-.post-card-tags span {
+.post-card-more {
   display: inline-block;
-  padding: 0.18rem 0.55rem;
-  border-radius: 6px;
-  background: #3a4650;
-  color: #d7e1e8;
-  font-size: 0.76rem;
-  line-height: 1.5;
-  font-weight: 700;
+  margin-bottom: 0.95rem;
+  color: var(--zakki-header);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none !important;
+  text-transform: uppercase;
 }
 
-/* 右カラムのタグ */
-.home-sidebar .sidebar-tags {
+.post-card-more:hover {
+  color: var(--zakki-accent);
+}
+
+.post-card-tags,
+.sidebar-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
 }
 
-.home-sidebar .sidebar-tags a {
+.post-card-tags a,
+.sidebar-tags a,
+article a[href*="/tags/"],
+article a[href*="./tags/"] {
   display: inline-block;
-  padding: 0.18rem 0.55rem;
+  padding: 0.18rem 0.56rem;
   border-radius: 6px;
   background: #3a4650;
   color: #d7e1e8 !important;
   font-size: 0.76rem;
+  font-weight: 800;
   line-height: 1.5;
-  font-weight: 700;
-  text-decoration: none;
+  text-decoration: none !important;
   transition:
     color 0.18s ease,
-    background 0.18s ease;
+    background 0.18s ease,
+    transform 0.18s ease;
 }
 
-.home-sidebar .sidebar-tags a:hover {
-  background: rgba(229, 138, 58, 0.18);
-  color: #e58a3a !important;
-  text-decoration: none;
-}
-
-/* Tagsページなど、本文内のタグ一覧リンクも少し統一 */
-article a[href*="/tags/"],
-article a[href*="./tags/"] {
-  display: inline-block;
-  padding: 0.12rem 0.45rem;
-  border-radius: 6px;
-  background: #3a4650;
-  color: #d7e1e8;
-  font-size: 0.86em;
-  font-weight: 700;
-  text-decoration: none;
-  transition:
-    color 0.18s ease,
-    background 0.18s ease;
-}
-
+.post-card-tags a:hover,
+.sidebar-tags a:hover,
 article a[href*="/tags/"]:hover,
 article a[href*="./tags/"]:hover {
   background: rgba(229, 138, 58, 0.18);
-  color: #e58a3a;
-  text-decoration: none;
+  color: var(--zakki-accent) !important;
+  transform: translateY(-1px);
 }
 
-/* 記事カード内タグもホバー可能に見えすぎないよう控えめに */
-.post-card-tags span {
-  opacity: 0.95;
+.post-card-no-image {
+  border-top: 3px solid var(--zakki-header);
 }
 
-/* ==============================
-   Mobile layout
-   ============================== */
-
-@media all and (max-width: 900px) {
-  /* ページ全体 */
-  body {
-    overflow-x: hidden;
-  }
-
-  .page,
-  .center,
-  article {
-    max-width: 100%;
-  }
-
-  /* 固定ヘッダー */
-  .blog-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 0.75rem;
-
-    padding: 1rem 1.1rem !important;
-  }
-
-  .blog-title {
-    font-size: 1.2rem;
-  }
-
-  .blog-nav {
-    justify-content: flex-start;
-    gap: 0.9rem;
-    font-size: 0.82rem;
-  }
-
-  /* トップページ2カラムを1カラムに */
-  .home-layout {
-    grid-template-columns: 1fr !important;
-    gap: 2.4rem !important;
-    width: auto;
-    max-width: 100%;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  /* Latest Posts */
-  .home-main h2 {
-    font-size: 0.9rem;
-  }
-
-  /* 記事カード */
-  .post-card {
-    width: 100%;
-    margin-bottom: 1.8rem;
-  }
-
-  .post-card h3 {
-    font-size: 1.15rem;
-    line-height: 1.5;
-  }
-
-  .post-card-description {
-    font-size: 0.92rem;
-    line-height: 1.75;
-  }
-
-  .post-card-image {
-    aspect-ratio: 16 / 10;
-  }
-
-  /* 画像なしカード */
-  .post-card-no-image {
-    padding-top: 1rem;
-  }
-
-  /* メタ情報 */
-  .post-card-meta {
-    font-size: 0.76rem;
-  }
-
-  /* タグ */
-  .post-card-tags,
-  .home-sidebar .sidebar-tags {
-    gap: 0.4rem;
-  }
-
-  .post-card-tags span,
-  .home-sidebar .sidebar-tags a {
-    font-size: 0.72rem;
-  }
-
-  /* 右カラムは下に回す */
-  .home-sidebar {
-    gap: 2rem;
-    margin-top: 0.3rem;
-  }
-
-  .home-sidebar .sidebar-box h3 {
-    font-size: 0.86rem;
-  }
-
-  /* 記事ページ本文 */
-  article {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  article h1 {
-    font-size: 1.55rem;
-  }
-
-  article h2 {
-    font-size: 1.25rem;
-  }
-
-  article h3 {
-    font-size: 1.1rem;
-  }
-
-  article p,
-  article li {
-    font-size: 0.96rem;
-  }
-
-  article img {
-    border-radius: 6px;
-  }
-
-  /* フッター */
-  footer {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
+.post-card-no-image .post-card-body {
+  padding-top: 1.25rem;
 }
 
-/* ==============================
-   Small mobile layout
-   ============================== */
-
-@media all and (max-width: 520px) {
-  .blog-header {
-    padding-top: 0.95rem !important;
-    padding-bottom: 0.95rem !important;
-  }
-
-  .blog-nav {
-    gap: 0.75rem;
-    font-size: 0.78rem;
-  }
-
-  .home-layout {
-    margin-left: 0.85rem;
-    margin-right: 0.85rem;
-  }
-
-  .post-card h3,
-  .post-card-meta,
-  .post-card-description,
-  .post-card-tags {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .post-card h3 {
-    font-size: 1.08rem;
-  }
-
-  .post-card-description {
-    font-size: 0.9rem;
-  }
-
-  .sidebar-box p {
-    font-size: 0.88rem;
-  }
+/* Sidebar */
+.blog-sidebar .sidebar-box {
+  margin: 0 0 2.35rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
-/* ==============================
-   Post bottom navigation
-   ============================== */
+.blog-sidebar .sidebar-box h3 {
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+}
+
+.blog-sidebar .sidebar-box p {
+  margin: 0 0 0.72rem;
+  color: #dce5ea;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.blog-sidebar .sidebar-box ul {
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.blog-sidebar .sidebar-box li {
+  margin: 0 0 0.48rem;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--zakki-text);
+  line-height: 1.55;
+}
+
+.blog-sidebar .sidebar-box a {
+  color: var(--zakki-text);
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.blog-sidebar .sidebar-box a:hover {
+  color: var(--zakki-accent);
+}
+
+/* Article body */
+.blog-main p,
+.blog-main li,
+.page article:has(> .blog-sidebar) > p,
+.page article:has(> .blog-sidebar) > li,
+.page article > .markdown-rendered:has(> .blog-sidebar) > p,
+.page article > .markdown-rendered:has(> .blog-sidebar) > li {
+  color: var(--zakki-text);
+}
+
+.blog-main p,
+.page article:has(> .blog-sidebar) > p,
+.page article > .markdown-rendered:has(> .blog-sidebar) > p {
+  margin: 0 0 1.15rem;
+}
+
+.blog-main h2,
+.page article:has(> .blog-sidebar) > h2,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h2 {
+  margin-top: 2.6rem;
+}
+
+.blog-main h3,
+.page article:has(> .blog-sidebar) > h3,
+.page article > .markdown-rendered:has(> .blog-sidebar) > h3 {
+  margin: 2rem 0 0.8rem;
+  color: var(--zakki-text);
+  font-size: 1.22rem;
+  line-height: 1.45;
+}
+
+.blog-main ul,
+.blog-main ol,
+.page article:has(> .blog-sidebar) > ul,
+.page article:has(> .blog-sidebar) > ol,
+.page article > .markdown-rendered:has(> .blog-sidebar) > ul,
+.page article > .markdown-rendered:has(> .blog-sidebar) > ol {
+  padding-left: 1.45rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-main blockquote,
+.page article:has(> .blog-sidebar) > blockquote,
+.page article > .markdown-rendered:has(> .blog-sidebar) > blockquote {
+  margin: 1.6rem 0;
+  padding: 0.95rem 1.1rem;
+  border-left: 4px solid var(--zakki-header);
+  background: var(--zakki-surface-soft);
+  color: #d7e1e8;
+}
+
+.blog-main pre,
+.page article:has(> .blog-sidebar) > pre,
+.page article > .markdown-rendered:has(> .blog-sidebar) > pre {
+  margin: 1.5rem 0;
+  border: 1px solid var(--zakki-border);
+  border-radius: 8px;
+}
+
+.blog-main img,
+.page article:has(> .blog-sidebar) > p img,
+.page article > .markdown-rendered:has(> .blog-sidebar) > p img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.8rem auto;
+  border-radius: 8px;
+}
+
+.blog-main hr,
+.page article:has(> .blog-sidebar) > hr,
+.page article > .markdown-rendered:has(> .blog-sidebar) > hr {
+  margin: 2.2rem 0;
+  border: 0;
+  border-top: 1px solid var(--zakki-border);
+}
+
+.page-lead,
+.empty-message {
+  color: var(--zakki-muted);
+}
+
+.archive-group {
+  margin-top: 2rem;
+}
+
+.post-link-list {
+  margin: 0;
+  padding: 1rem 1.15rem !important;
+  list-style: none;
+  border: 1px solid var(--zakki-border);
+  border-radius: 8px;
+  background: var(--zakki-surface);
+}
+
+.post-link-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.45rem 0 !important;
+  border-bottom: 1px solid rgba(139, 201, 189, 0.14) !important;
+}
+
+.post-link-list li:last-child {
+  border-bottom: 0 !important;
+}
+
+.post-link-list a {
+  color: var(--zakki-text);
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.post-link-list a:hover {
+  color: var(--zakki-accent);
+}
+
+.post-link-list span {
+  color: var(--zakki-dim);
+  font-size: 0.82rem;
+}
 
 .post-bottom-nav {
-  max-width: 760px;
-  margin: 3rem auto 0;
-  padding: 1.4rem 0 0;
-  border-top: 1px solid rgba(120, 181, 181, 0.45);
+  margin: 3rem 0 0;
+  padding: 1.35rem 0 0;
+  border-top: 1px solid var(--zakki-border);
   text-align: center;
 }
 
@@ -1349,44 +760,154 @@ article a[href*="./tags/"]:hover {
 
 .post-bottom-nav a {
   display: inline-block;
-  margin: 0 0.35rem;
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
+  margin: 0 0.3rem 0.35rem;
+  padding: 0.25rem 0.58rem;
+  border-radius: 5px;
   color: var(--zakki-text);
   font-size: 0.86rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition:
-    color 0.18s ease,
-    background 0.18s ease;
+  font-weight: 800;
+  text-decoration: none !important;
 }
 
 .post-bottom-nav a:hover {
   background: rgba(229, 138, 58, 0.16);
-  color: #e58a3a;
-  text-decoration: none;
+  color: var(--zakki-accent);
 }
 
-@media all and (max-width: 800px) {
-  .post-bottom-nav {
-    margin-top: 2.4rem;
+.blog-footer {
+  width: min(100%, var(--zakki-width));
+  margin: 4rem auto 0;
+  padding: 1.6rem 0 2.4rem;
+  border-top: 1px solid var(--zakki-border);
+  color: var(--zakki-dim);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.blog-footer p {
+  margin: 0.25rem 0;
+  color: var(--zakki-dim);
+}
+
+.blog-footer a {
+  color: var(--zakki-muted);
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.blog-footer a:hover {
+  color: var(--zakki-accent);
+}
+
+.page article:has(> .blog-sidebar) > .blog-footer,
+.page article > .markdown-rendered:has(> .blog-sidebar) > .blog-footer {
+  grid-column: 1 / -1 !important;
+  justify-self: stretch !important;
+  clear: both !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 4rem 0 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    padding-top: 7.2rem !important;
   }
 
-  .post-bottom-nav a {
-    margin-bottom: 0.4rem;
+  .blog-header {
+    min-height: 5.9rem;
+    padding: 1rem 0 !important;
+  }
+
+  .blog-title {
+    grid-row: 1;
+  }
+
+  .blog-nav {
+    grid-row: 2;
+    justify-self: start !important;
+    gap: 0.95rem;
+    margin-top: 0.7rem;
+  }
+
+  .blog-layout,
+  .page article:has(> .blog-sidebar),
+  .page article > .markdown-rendered:has(> .blog-sidebar) {
+    display: block !important;
+    width: min(100%, var(--zakki-main-width));
+  }
+
+  .blog-sidebar,
+  .page article:has(> .blog-sidebar) > .blog-sidebar,
+  .page article > .markdown-rendered:has(> .blog-sidebar) > .blog-sidebar {
+    display: none !important;
+  }
+
+  .post-list-section {
+    grid-template-columns: 1fr;
+  }
+
+  .page article > .markdown-rendered:has(> .blog-sidebar) > :not(.blog-header):not(.blog-sidebar):not(.blog-footer) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .post-link-list li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .blog-footer {
+    width: min(100%, var(--zakki-main-width));
+    margin-top: 3rem;
   }
 }
 
-/* ==============================
-   Header nav spacing
-   ============================== */
+@media (max-width: 620px) {
+  .page article:has(> .blog-header),
+  .page article:has(> .blog-layout),
+  .page article:has(> .blog-sidebar),
+  .page article:has(> .markdown-rendered > .blog-sidebar) {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 
-.blog-nav {
-  gap: 1.8rem !important;
+  .blog-header {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 1fr) minmax(1rem, 1fr) !important;
+  }
+
+  .blog-title {
+    font-size: 1.18rem;
+  }
+
+  .blog-nav {
+    font-size: 0.78rem;
+  }
+
+  .post-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .post-card-body {
+    padding: 1rem;
+  }
+
+  .post-title-meta {
+    gap: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .post-title-meta span + span::before {
+    margin-right: 0.65rem;
+  }
 }
 
-.blog-nav a {
-  display: inline-block;
-  padding-left: 0.15rem;
-  padding-right: 0.15rem;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

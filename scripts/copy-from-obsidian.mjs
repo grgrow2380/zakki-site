@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
+import { createBlogFooter, createMarkdownPageShell } from "./site-parts.mjs";
 
 const home = process.env.USERPROFILE;
+
+const postShellHtml = createMarkdownPageShell({ prefix: "../" });
 
 const candidateVaultPaths = [
   path.join(home, "iCloudDrive", "Obsidian", "zakki"),
@@ -51,6 +54,169 @@ function isDraftMarkdown(text) {
   return draftMatch[1].trim().toLowerCase() === "true";
 }
 
+function splitFrontmatter(text) {
+  const cleanText = text.replace(/^\uFEFF/, "");
+  const match = cleanText.match(/^(---\s*\r?\n[\s\S]*?\r?\n---\s*)([\s\S]*)$/);
+
+  if (!match) {
+    return {
+      frontmatter: "",
+      body: cleanText,
+    };
+  }
+
+  return {
+    frontmatter: match[1].trimEnd(),
+    body: match[2].replace(/^\s+/, ""),
+  };
+}
+
+function parseFrontmatter(text) {
+  const cleanText = text.replace(/^\uFEFF/, "");
+  const match = cleanText.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/);
+
+  if (!match) {
+    return {};
+  }
+
+  const data = {};
+  const lines = match[1].split(/\r?\n/);
+  let currentKey = null;
+
+  for (const line of lines) {
+    const keyValueMatch = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+
+    if (keyValueMatch) {
+      const key = keyValueMatch[1];
+      let value = keyValueMatch[2].trim();
+
+      if (value === "") {
+        data[key] = [];
+        currentKey = key;
+      } else {
+        data[key] = value.replace(/^["']|["']$/g, "");
+        currentKey = key;
+      }
+
+      continue;
+    }
+
+    const listItemMatch = line.match(/^\s*-\s*(.*)$/);
+
+    if (listItemMatch && currentKey) {
+      if (!Array.isArray(data[currentKey])) {
+        data[currentKey] = [];
+      }
+
+      data[currentKey].push(listItemMatch[1].trim());
+    }
+  }
+
+  return data;
+}
+
+function formatDisplayDate(dateText) {
+  if (!dateText) {
+    return "";
+  }
+
+  return String(dateText).replaceAll("-", ".");
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function normalizePostImagePath(image) {
+  if (typeof image !== "string") {
+    return "";
+  }
+
+  const trimmedImage = image.trim();
+
+  if (!trimmedImage) {
+    return "";
+  }
+
+  if (
+    trimmedImage.startsWith("http://") ||
+    trimmedImage.startsWith("https://") ||
+    trimmedImage.startsWith("/") ||
+    trimmedImage.startsWith("../")
+  ) {
+    return trimmedImage;
+  }
+
+  const withoutCurrentDir = trimmedImage.replace(/^\.\//, "");
+
+  if (withoutCurrentDir.startsWith("images/")) {
+    return `../${withoutCurrentDir}`;
+  }
+
+  return `../images/${withoutCurrentDir}`;
+}
+
+function createPostMeta(frontmatter) {
+  const updated = frontmatter.updated || frontmatter.modified || frontmatter.date;
+
+  if (!updated) {
+    return "";
+  }
+
+  return `<div class="post-title-meta">
+<span>UPDATED: ${formatDisplayDate(updated)}</span>
+</div>`;
+}
+
+function createPostHeroImage(frontmatter) {
+  const imagePath = normalizePostImagePath(frontmatter.image);
+
+  if (!imagePath) {
+    return "";
+  }
+
+  return `<figure class="post-hero-image">
+<img src="${escapeHtml(imagePath)}" alt="${escapeHtml(frontmatter.title || "")}">
+</figure>`;
+}
+
+function insertPostIntro(body, introHtml) {
+  if (!introHtml) {
+    return body;
+  }
+
+  const headingMatch = body.match(/^(# .+?)(\r?\n)([\s\S]*)$/);
+
+  if (!headingMatch) {
+    return `${introHtml}\n\n${body}`;
+  }
+
+  return `${headingMatch[1]}${headingMatch[2]}\n${introHtml}\n\n${headingMatch[3]}`;
+}
+
+function buildPublishedPost(text) {
+  const { frontmatter, body } = splitFrontmatter(text);
+  const parsedFrontmatter = parseFrontmatter(text);
+  const frontmatterBlock = frontmatter ? `${frontmatter}\n\n` : "";
+  const introHtml = [
+    createPostMeta(parsedFrontmatter),
+    createPostHeroImage(parsedFrontmatter),
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+  const bodyWithIntro = insertPostIntro(body, introHtml);
+
+  return `${frontmatterBlock}${postShellHtml}
+
+${bodyWithIntro}
+
+${createBlogFooter("../")}`;
+}
+
 function copyMarkdownFiles(sourceDir, destDir) {
   const files = fs.readdirSync(sourceDir);
 
@@ -74,7 +240,7 @@ function copyMarkdownFiles(sourceDir, destDir) {
       continue;
     }
 
-    fs.copyFileSync(source, dest);
+    fs.writeFileSync(dest, buildPublishedPost(text), "utf8");
     console.log(`Copied post: ${file}`);
   }
 }

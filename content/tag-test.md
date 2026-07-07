@@ -1,5 +1,6 @@
 ---
-title: Python
+title: test
+generatedBy: zakki-tag-pages
 
 ---
 
@@ -20,8 +21,18 @@ title: Python
 
 <main class="blog-main">
 <section class="post-list-section">
-<h1>Python</h1>
-<p class="empty-message">まだ記事がありません。</p>
+<h1>#test</h1>
+<p class="page-lead">test タグの記事一覧です。</p>
+<ul class="post-link-list">
+<li>
+  <a href="./posts/%E7%94%BB%E5%83%8F%E3%81%AA%E3%81%97%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">画像なしテスト記事</a>
+  <span>2026-06-28 / Blog</span>
+</li>
+<li>
+  <a href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">記事内フッターテスト記事</a>
+  <span>2026-06-28 / Blog</span>
+</li>
+</ul>
 </section>
 </main>
 

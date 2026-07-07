@@ -43,63 +43,6 @@ title: Sitemap
 
 </div>
 
-<div class="blog-layout">
-
-<main class="blog-main">
-<section class="post-list-section">
-<h1>Sitemap</h1>
-<p class="page-lead">このサイトの記事一覧です。</p>
-
-<section class="archive-group">
-<h2>固定ページ</h2>
-<ul class="post-link-list">
-<li><a href="./">Home</a></li>
-<li><a href="./About">About</a></li>
-<li><a href="./Tags">Tags</a></li>
-<li><a href="./Archive">Archive</a></li>
-</ul>
-</section>
-
-<section class="archive-group">
-<h2>カテゴリー</h2>
-<ul class="post-link-list">
-<li><a href="./Blog">Blog</a></li>
-<li><a href="./%E6%BC%AB%E7%94%BB%E3%83%BB%E5%89%B5%E4%BD%9C">漫画・創作</a></li>
-<li><a href="./PC%E3%83%BB%E3%82%AC%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88">PC・ガジェット</a></li>
-<li><a href="./Python">Python</a></li>
-<li><a href="./%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a></li>
-<li><a href="./%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC">レビュー</a></li>
-</ul>
-</section>
-
-<section class="archive-group">
-<h2>記事</h2>
-<ul class="post-link-list">
-<li>
-  <a href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">サムネ画像＆本文画像ありテスト投稿</a>
-  <span>2026-07-08 / Blog</span>
-</li>
-<li>
-  <a href="./posts/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE%E6%8A%95%E7%A8%BF">はじめての投稿</a>
-  <span>2026-06-28 / Blog</span>
-</li>
-<li>
-  <a href="./posts/%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">テスト投稿</a>
-  <span>2026-06-28 / Blog</span>
-</li>
-<li>
-  <a href="./posts/%E7%94%BB%E5%83%8F%E3%81%AA%E3%81%97%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">画像なしテスト記事</a>
-  <span>2026-06-28 / Blog</span>
-</li>
-<li>
-  <a href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">記事内フッターテスト記事</a>
-  <span>2026-06-28 / Blog</span>
-</li>
-</ul>
-</section>
-</section>
-</main>
-
 <aside class="blog-sidebar">
 
 
@@ -142,7 +85,33 @@ title: Sitemap
 
 </aside>
 
-</div>
+# Sitemap
+
+サイト内ページの一覧です。
+
+## 固定ページ
+
+- [Home](./)
+- [About](./About)
+- [Tags](./Tags)
+- [Archive](./Archive)
+
+## カテゴリー
+
+- [Blog](./Blog)
+- [漫画・創作](./%E6%BC%AB%E7%94%BB%E3%83%BB%E5%89%B5%E4%BD%9C)
+- [PC・ガジェット](./PC%E3%83%BB%E3%82%AC%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88)
+- [Python](./Python)
+- [ゲーム](./%E3%82%B2%E3%83%BC%E3%83%A0)
+- [レビュー](./%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC)
+
+## 記事
+
+- [サムネ画像＆本文画像ありテスト投稿](./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF) / 2026-07-08 / Blog
+- [はじめての投稿](./posts/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE%E6%8A%95%E7%A8%BF) / 2026-06-28 / Blog
+- [テスト投稿](./posts/%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF) / 2026-06-28 / Blog
+- [画像なしテスト記事](./posts/%E7%94%BB%E5%83%8F%E3%81%AA%E3%81%97%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B) / 2026-06-28 / Blog
+- [記事内フッターテスト記事](./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B) / 2026-06-28 / Blog
 
 <div class="blog-footer">
 <p>© zakki</p>

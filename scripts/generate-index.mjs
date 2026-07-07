@@ -102,6 +102,10 @@ function htmlLink(href, label, className = "") {
   return `<a${classAttr} href="${href}">${escapeHtml(label)}</a>`;
 }
 
+function markdownLink(href, label) {
+  return `[${String(label).replaceAll("[", "\\[").replaceAll("]", "\\]")}](${href})`;
+}
+
 function categoryHref(category, prefix = "./") {
   return `${prefix}${encodeURIComponent(category)}`;
 }
@@ -257,6 +261,22 @@ ${createBlogLayout({
 `;
 }
 
+function markdownPageDocument(title, bodyMarkdown, { prefix = "./", frontmatter = "" } = {}) {
+  const extraFrontmatter = frontmatter ? `${frontmatter.trim()}\n` : "";
+
+  return `---
+title: ${title}
+${extraFrontmatter}
+---
+
+${createMarkdownPageShell({ prefix, sidebarHtml: sidebarHtml(prefix) })}
+
+${bodyMarkdown.trimEnd()}
+
+${createBlogFooter(prefix)}
+`;
+}
+
 function splitMarkdownFrontmatter(text, fallbackTitle) {
   const cleanText = text.replace(/^\uFEFF/, "");
   const match = cleanText.match(/^---\s*\r?\n([\s\S]*?)\r?\n-{3,}\s*\r?\n([\s\S]*)$/);
@@ -338,6 +358,15 @@ function postListItemsWithPrefix(items, prefix = "./") {
   ${htmlLink(postHref(post.file, prefix), post.title)}
   <span>${escapeHtml(formatDate(post.date))} / ${escapeHtml(post.category)}</span>
 </li>`,
+    )
+    .join("\n");
+}
+
+function postListMarkdown(items, prefix = "./") {
+  return items
+    .map(
+      (post) =>
+        `- ${markdownLink(postHref(post.file, prefix), post.title)} / ${formatDate(post.date)} / ${post.category}`,
     )
     .join("\n");
 }
@@ -523,6 +552,68 @@ Obsidianで書いたメモの中から、公開してもよいものをQuartzで
   );
 }
 
+function generateTagsMarkdownPage() {
+  const tags = collectTags();
+  const body = tags
+    .map(([tag, tagPosts]) => `## #${tag}\n\n${postListMarkdown(tagPosts)}`)
+    .join("\n\n");
+
+  return markdownPageDocument(
+    "Tags",
+    `# Tags
+
+タグ別の記事一覧です。
+
+${body || "まだタグがありません。"}`,
+  );
+}
+
+function generateArchiveMarkdownPage() {
+  const archives = collectArchives();
+  const body = archives
+    .map(([month, archivePosts]) => `## ${month}\n\n${postListMarkdown(archivePosts)}`)
+    .join("\n\n");
+
+  return markdownPageDocument(
+    "Archive",
+    `# Archive
+
+月別の記事一覧です。
+
+${body || "まだ記事がありません。"}`,
+  );
+}
+
+function generateSitemapMarkdownPage() {
+  const fixedPages = ["About", "Tags", "Archive"];
+  const fixedList = fixedPages
+    .map((page) => `- ${markdownLink(`./${page}`, page)}`)
+    .join("\n");
+  const categoryList = categories
+    .map((category) => `- ${markdownLink(categoryHref(category), category)}`)
+    .join("\n");
+
+  return markdownPageDocument(
+    "Sitemap",
+    `# Sitemap
+
+サイト内ページの一覧です。
+
+## 固定ページ
+
+- ${markdownLink("./", "Home")}
+${fixedList}
+
+## カテゴリー
+
+${categoryList}
+
+## 記事
+
+${postListMarkdown(posts) || "まだ記事がありません。"}`,
+  );
+}
+
 fs.writeFileSync(path.join(contentDir, "index.md"), generateIndex(), "utf8");
 
 for (const category of categories) {
@@ -533,9 +624,9 @@ for (const category of categories) {
   );
 }
 
-fs.writeFileSync(path.join(contentDir, "Tags.md"), generateTagsPage(), "utf8");
-fs.writeFileSync(path.join(contentDir, "Archive.md"), generateArchivePage(), "utf8");
-fs.writeFileSync(path.join(contentDir, "Sitemap.md"), generateSitemapPage(), "utf8");
+fs.writeFileSync(path.join(contentDir, "Tags.md"), generateTagsMarkdownPage(), "utf8");
+fs.writeFileSync(path.join(contentDir, "Archive.md"), generateArchiveMarkdownPage(), "utf8");
+fs.writeFileSync(path.join(contentDir, "Sitemap.md"), generateSitemapMarkdownPage(), "utf8");
 
 generateAboutPage();
 generateTagDetailPages();

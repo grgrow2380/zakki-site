@@ -25,6 +25,10 @@ generatedBy: zakki-tag-pages
 <p class="page-lead">test タグの記事一覧です。</p>
 <ul class="post-link-list">
 <li>
+  <a href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">サムネ画像＆本文画像ありテスト投稿</a>
+  <span>2026-07-08 / Blog</span>
+</li>
+<li>
   <a href="./posts/%E7%94%BB%E5%83%8F%E3%81%AA%E3%81%97%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">画像なしテスト記事</a>
   <span>2026-06-28 / Blog</span>
 </li>
@@ -60,16 +64,17 @@ generatedBy: zakki-tag-pages
 <div class="sidebar-box">
 <h3>TAGS</h3>
 <div class="sidebar-tags">
-<a href="./tag-blog">#blog (2)</a>
-<a href="./tag-memo">#memo (1)</a>
-<a href="./tag-obsidian">#obsidian (2)</a>
-<a href="./tag-test">#test (2)</a>
+<a href="./tag-blog">#blog (3)</a>
+<a href="./tag-memo">#memo (2)</a>
+<a href="./tag-obsidian">#obsidian (3)</a>
+<a href="./tag-test">#test (3)</a>
 </div>
 </div>
 
 <div class="sidebar-box">
 <h3>ARCHIVE</h3>
 <ul class="sidebar-archive-list">
+<li><a href="./Archive">2026-07 (1)</a></li>
 <li><a href="./Archive">2026-06 (4)</a></li>
 </ul>
 </div>

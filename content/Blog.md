@@ -21,6 +21,23 @@ title: Blog
 <main class="blog-main">
 <section class="post-list-section">
 <h1>Blog</h1>
+<article class="post-card">
+<a class="post-card-image-link" href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">
+  <img class="post-card-image" src="./images/post3.png" alt="サムネ画像＆本文画像ありテスト投稿">
+</a>
+<div class="post-card-body">
+<h3><a href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">サムネ画像＆本文画像ありテスト投稿</a></h3>
+<div class="post-card-meta">
+  <span>2026-07-08</span>
+  <span>/</span>
+  <a href="./Blog">Blog</a>
+</div>
+<p class="post-card-description">この記事は、サムネ画像＆本文画像ありテスト投稿です。 以下、画像です。 ![[IMG 8630.jpg]] 以上、画像でした。 文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字...</p>
+<a class="post-card-more" href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">more</a>
+<div class="post-card-tags"><a href="./tag-blog">#blog</a> <a href="./tag-memo">#memo</a> <a href="./tag-obsidian">#obsidian</a> <a href="./tag-test">#test</a></div>
+</div>
+</article>
+
 <article class="post-card post-card-no-image">
 
 <div class="post-card-body">
@@ -109,16 +126,17 @@ title: Blog
 <div class="sidebar-box">
 <h3>TAGS</h3>
 <div class="sidebar-tags">
-<a href="./tag-blog">#blog (2)</a>
-<a href="./tag-memo">#memo (1)</a>
-<a href="./tag-obsidian">#obsidian (2)</a>
-<a href="./tag-test">#test (2)</a>
+<a href="./tag-blog">#blog (3)</a>
+<a href="./tag-memo">#memo (2)</a>
+<a href="./tag-obsidian">#obsidian (3)</a>
+<a href="./tag-test">#test (3)</a>
 </div>
 </div>
 
 <div class="sidebar-box">
 <h3>ARCHIVE</h3>
 <ul class="sidebar-archive-list">
+<li><a href="./Archive">2026-07 (1)</a></li>
 <li><a href="./Archive">2026-06 (4)</a></li>
 </ul>
 </div>

@@ -13,7 +13,34 @@ draft: false
   <a href="./Sitemap">sitemap</a>
   <a href="./Tags">tags</a>
   <a href="./Archive">archive</a>
+  <button class="theme-toggle" type="button" aria-label="toggle theme" onclick="window.zakkiToggleTheme && window.zakkiToggleTheme()">
+    <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+    <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+  </button>
 </nav>
+
+<script>
+(() => {
+  if (window.zakkiThemeReady) return;
+  window.zakkiThemeReady = true;
+  const root = document.documentElement;
+  const storageKey = "zakki-theme";
+  const setTheme = (theme) => {
+    root.dataset.zakkiTheme = theme;
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {}
+  };
+  window.zakkiToggleTheme = () => {
+    setTheme(root.dataset.zakkiTheme === "light" ? "dark" : "light");
+  };
+  let savedTheme = "dark";
+  try {
+    savedTheme = localStorage.getItem(storageKey) || "dark";
+  } catch {}
+  setTheme(savedTheme === "light" ? "light" : "dark");
+})();
+</script>
 
 </div>
 
@@ -41,14 +68,18 @@ draft: false
 <div class="sidebar-box">
 <h3>TAGS</h3>
 <div class="sidebar-tags">
-<a href="./Tags">タグ一覧を見る</a>
+<a href="./tag-blog">#blog (3)</a>
+<a href="./tag-memo">#memo (2)</a>
+<a href="./tag-obsidian">#obsidian (3)</a>
+<a href="./tag-test">#test (3)</a>
 </div>
 </div>
 
 <div class="sidebar-box">
 <h3>ARCHIVE</h3>
 <ul class="sidebar-archive-list">
-<li><a href="./Archive">記事一覧を見る</a></li>
+<li><a href="./Archive">2026-07 (1)</a></li>
+<li><a href="./Archive">2026-06 (4)</a></li>
 </ul>
 </div>
 

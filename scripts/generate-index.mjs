@@ -503,7 +503,7 @@ function generateAboutPage() {
 
     fs.writeFileSync(
       aboutPath,
-      `${frontmatter}\n\n${createMarkdownPageShell({ prefix: "./" })}\n\n${normalizedBody.trimEnd()}\n\n${createBlogFooter("./")}`,
+      `${frontmatter}\n\n${createMarkdownPageShell({ prefix: "./", sidebarHtml: sidebarHtml("./") })}\n\n${normalizedBody.trimEnd()}\n\n${createBlogFooter("./")}`,
       "utf8",
     );
     return;
@@ -518,7 +518,7 @@ Obsidianで書いたメモの中から、公開してもよいものをQuartzで
 
   fs.writeFileSync(
     aboutPath,
-    `---\ntitle: About\n---\n\n${createMarkdownPageShell({ prefix: "./" })}\n\n${body.trimEnd()}\n\n${createBlogFooter("./")}`,
+    `---\ntitle: About\n---\n\n${createMarkdownPageShell({ prefix: "./", sidebarHtml: sidebarHtml("./") })}\n\n${body.trimEnd()}\n\n${createBlogFooter("./")}`,
     "utf8",
   );
 }

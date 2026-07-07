@@ -12,7 +12,34 @@ title: Blog
   <a href="./Sitemap">sitemap</a>
   <a href="./Tags">tags</a>
   <a href="./Archive">archive</a>
+  <button class="theme-toggle" type="button" aria-label="toggle theme" onclick="window.zakkiToggleTheme && window.zakkiToggleTheme()">
+    <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+    <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+  </button>
 </nav>
+
+<script>
+(() => {
+  if (window.zakkiThemeReady) return;
+  window.zakkiThemeReady = true;
+  const root = document.documentElement;
+  const storageKey = "zakki-theme";
+  const setTheme = (theme) => {
+    root.dataset.zakkiTheme = theme;
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {}
+  };
+  window.zakkiToggleTheme = () => {
+    setTheme(root.dataset.zakkiTheme === "light" ? "dark" : "light");
+  };
+  let savedTheme = "dark";
+  try {
+    savedTheme = localStorage.getItem(storageKey) || "dark";
+  } catch {}
+  setTheme(savedTheme === "light" ? "light" : "dark");
+})();
+</script>
 
 </div>
 
@@ -32,7 +59,7 @@ title: Blog
   <span>/</span>
   <a href="./Blog">Blog</a>
 </div>
-<p class="post-card-description">この記事は、サムネ画像＆本文画像ありテスト投稿です。 以下、画像です。 ![[IMG 8630.jpg]] 以上、画像でした。 文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字...</p>
+<p class="post-card-description">この記事は、サムネ画像＆本文画像ありテスト投稿です。 以下、画像です。 以上、画像でした。 文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字列文字...</p>
 <a class="post-card-more" href="./posts/%E3%82%B5%E3%83%A0%E3%83%8D%E7%94%BB%E5%83%8F%EF%BC%86%E6%9C%AC%E6%96%87%E7%94%BB%E5%83%8F%E3%81%82%E3%82%8A%E3%83%86%E3%82%B9%E3%83%88%E6%8A%95%E7%A8%BF">more</a>
 <div class="post-card-tags"><a href="./tag-blog">#blog</a> <a href="./tag-memo">#memo</a> <a href="./tag-obsidian">#obsidian</a> <a href="./tag-test">#test</a></div>
 </div>
@@ -47,7 +74,7 @@ title: Blog
   <span>/</span>
   <a href="./Blog">Blog</a>
 </div>
-<p class="post-card-description">Obsidianで書いたメモを、Quartzを使って公開できるようにしました。 このサイトでは、漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく予定です。</p>
+<p class="post-card-description">Obsidianで書いたメモを、Quartzを使って公開できるようにしました。 このサイトでは、漫画、ガジェット、ゲーム、PC、日々のメモなどを雑に置いていく予定です。 Next: サムネ画像＆本文画像ありテスト投稿 Previous: テ...</p>
 <a class="post-card-more" href="./posts/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE%E6%8A%95%E7%A8%BF">more</a>
 <div class="post-card-tags"><a href="./tag-blog">#blog</a> <a href="./tag-obsidian">#obsidian</a></div>
 </div>
@@ -94,7 +121,7 @@ title: Blog
   <span>/</span>
   <a href="./Blog">Blog</a>
 </div>
-<p class="post-card-description">本文を書く。 この記事を読み終えたら Home Archive Tags</p>
+<p class="post-card-description">本文を書く。 この記事を読み終えたら Home Archive Tags Next: 画像なしテスト記事</p>
 <a class="post-card-more" href="./posts/%E8%A8%98%E4%BA%8B%E5%86%85%E3%83%95%E3%83%83%E3%82%BF%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B">more</a>
 <div class="post-card-tags"><a href="./tag-test">#test</a> <a href="./tag-blog">#blog</a></div>
 </div>

@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
-import { createBlogFooter, createMarkdownPageShell } from "./site-parts.mjs";
+import {
+  createBlogFooter,
+  createMarkdownPageShell,
+  createSidebarContent,
+} from "./site-parts.mjs";
 
 const home = process.env.USERPROFILE;
-
-const postShellHtml = createMarkdownPageShell({ prefix: "../" });
 
 const candidateVaultPaths = [
   path.join(home, "iCloudDrive", "Obsidian", "zakki"),
@@ -123,6 +125,15 @@ function formatDisplayDate(dateText) {
   return String(dateText).replaceAll("-", ".");
 }
 
+function getMonth(dateText) {
+  if (!dateText) {
+    return "";
+  }
+
+  const match = String(dateText).match(/^(\d{4})-(\d{2})/);
+  return match ? `${match[1]}-${match[2]}` : "";
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -160,6 +171,39 @@ function normalizePostImagePath(image) {
   return `../images/${withoutCurrentDir}`;
 }
 
+function normalizeArticleImagePath(image) {
+  return normalizePostImagePath(image);
+}
+
+function imageLinkHtml(src, alt = "") {
+  const safeSrc = escapeHtml(src);
+  const safeAlt = escapeHtml(alt);
+
+  return `<a class="article-image-link" href="${safeSrc}" target="_blank" rel="noopener noreferrer"><img src="${safeSrc}" alt="${safeAlt}"></a>`;
+}
+
+function wrapArticleImages(body) {
+  return body
+    .replace(/!\[\[([^\]|]+)(?:\|([^\]]+))?]]/g, (_match, image, alt) => {
+      const imagePath = normalizeArticleImagePath(image);
+
+      if (!imagePath) {
+        return "";
+      }
+
+      return imageLinkHtml(imagePath, alt || path.basename(image));
+    })
+    .replace(/(^|[^\[])\!\[([^\]]*)]\(([^)]+)\)/g, (_match, prefix, alt, image) => {
+      const imagePath = normalizeArticleImagePath(image);
+
+      if (!imagePath) {
+        return prefix;
+      }
+
+      return `${prefix}${imageLinkHtml(imagePath, alt)}`;
+    });
+}
+
 function createPostMeta(frontmatter) {
   const updated = frontmatter.updated || frontmatter.modified || frontmatter.date;
 
@@ -184,6 +228,91 @@ function createPostHeroImage(frontmatter) {
 </figure>`;
 }
 
+function postSlug(fileName) {
+  return path.basename(fileName, ".md");
+}
+
+function postHref(fileName, prefix = "../") {
+  return `${prefix}posts/${encodeURIComponent(postSlug(fileName))}`;
+}
+
+function htmlLink(href, label, className = "") {
+  const classAttr = className ? ` class="${className}"` : "";
+  return `<a${classAttr} href="${href}">${escapeHtml(label)}</a>`;
+}
+
+function collectTags(posts) {
+  const tagMap = new Map();
+
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      if (!tagMap.has(tag)) {
+        tagMap.set(tag, 0);
+      }
+
+      tagMap.set(tag, tagMap.get(tag) + 1);
+    }
+  }
+
+  return [...tagMap.entries()].sort((a, b) => a[0].localeCompare(b[0], "ja"));
+}
+
+function collectArchives(posts) {
+  const archiveMap = new Map();
+
+  for (const post of posts) {
+    const month = getMonth(post.date);
+
+    if (!month) {
+      continue;
+    }
+
+    if (!archiveMap.has(month)) {
+      archiveMap.set(month, 0);
+    }
+
+    archiveMap.set(month, archiveMap.get(month) + 1);
+  }
+
+  return [...archiveMap.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+}
+
+function createArticleSidebarHtml(posts, prefix = "../") {
+  const tagLinks = collectTags(posts)
+    .slice(0, 20)
+    .map(([tag, count]) => htmlLink(`${prefix}${encodeURIComponent(`tag-${tag}`)}`, `#${tag} (${count})`))
+    .join("\n");
+
+  const archiveList = collectArchives(posts)
+    .slice(0, 12)
+    .map(([month, count]) => `<li>${htmlLink(`${prefix}Archive`, `${month} (${count})`)}</li>`)
+    .join("\n");
+
+  return createSidebarContent({
+    prefix,
+    tagLinks,
+    archiveList,
+  });
+}
+
+function createAdjacentPostNav({ nextPost, previousPost }) {
+  if (!nextPost && !previousPost) {
+    return "";
+  }
+
+  const nextLink = nextPost
+    ? htmlLink(postHref(nextPost.file), `Next: ${nextPost.title}`)
+    : "";
+  const previousLink = previousPost
+    ? htmlLink(postHref(previousPost.file), `Previous: ${previousPost.title}`)
+    : "";
+
+  return `<nav class="post-adjacent-nav" aria-label="post navigation">
+<div class="post-adjacent-next">${nextLink}</div>
+<div class="post-adjacent-previous">${previousLink}</div>
+</nav>`;
+}
+
 function insertPostIntro(body, introHtml) {
   if (!introHtml) {
     return body;
@@ -198,33 +327,55 @@ function insertPostIntro(body, introHtml) {
   return `${headingMatch[1]}${headingMatch[2]}\n${introHtml}\n\n${headingMatch[3]}`;
 }
 
-function buildPublishedPost(text) {
+function buildPublishedPost(text, { sidebarHtml = "", adjacentNavHtml = "" } = {}) {
   const { frontmatter, body } = splitFrontmatter(text);
   const parsedFrontmatter = parseFrontmatter(text);
   const frontmatterBlock = frontmatter ? `${frontmatter}\n\n` : "";
+  const postShellHtml = createMarkdownPageShell({
+    prefix: "../",
+    sidebarHtml,
+  });
+  const bodyWithWrappedImages = wrapArticleImages(body);
   const introHtml = [
     createPostMeta(parsedFrontmatter),
     createPostHeroImage(parsedFrontmatter),
   ]
     .filter(Boolean)
     .join("\n\n");
-  const bodyWithIntro = insertPostIntro(body, introHtml);
+  const bodyWithIntro = insertPostIntro(bodyWithWrappedImages, introHtml);
 
   return `${frontmatterBlock}${postShellHtml}
 
 ${bodyWithIntro}
 
+${adjacentNavHtml}
+
 ${createBlogFooter("../")}`;
 }
 
 function copyMarkdownFiles(sourceDir, destDir) {
-  const files = fs.readdirSync(sourceDir);
+  const files = fs.readdirSync(sourceDir).filter((file) => file.endsWith(".md"));
+  const publishedPosts = files
+    .map((file) => {
+      const source = path.join(sourceDir, file);
+      const text = fs.readFileSync(source, "utf8");
+      const frontmatter = parseFrontmatter(text);
+
+      return {
+        file,
+        source,
+        text,
+        title: frontmatter.title || postSlug(file),
+        date: frontmatter.date || "",
+        tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
+        draft: isDraftMarkdown(text),
+      };
+    })
+    .filter((post) => !post.draft)
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const articleSidebarHtml = createArticleSidebarHtml(publishedPosts, "../");
 
   for (const file of files) {
-    if (!file.endsWith(".md")) {
-      continue;
-    }
-
     const source = path.join(sourceDir, file);
     const dest = path.join(destDir, file);
     const text = fs.readFileSync(source, "utf8");
@@ -240,7 +391,23 @@ function copyMarkdownFiles(sourceDir, destDir) {
       continue;
     }
 
-    fs.writeFileSync(dest, buildPublishedPost(text), "utf8");
+    const postIndex = publishedPosts.findIndex((post) => post.file === file);
+    const adjacentNavHtml = createAdjacentPostNav({
+      nextPost: postIndex > 0 ? publishedPosts[postIndex - 1] : null,
+      previousPost:
+        postIndex >= 0 && postIndex < publishedPosts.length - 1
+          ? publishedPosts[postIndex + 1]
+          : null,
+    });
+
+    fs.writeFileSync(
+      dest,
+      buildPublishedPost(text, {
+        sidebarHtml: articleSidebarHtml,
+        adjacentNavHtml,
+      }),
+      "utf8",
+    );
     console.log(`Copied post: ${file}`);
   }
 }

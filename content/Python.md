@@ -12,7 +12,34 @@ title: Python
   <a href="./Sitemap">sitemap</a>
   <a href="./Tags">tags</a>
   <a href="./Archive">archive</a>
+  <button class="theme-toggle" type="button" aria-label="toggle theme" onclick="window.zakkiToggleTheme && window.zakkiToggleTheme()">
+    <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+    <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+  </button>
 </nav>
+
+<script>
+(() => {
+  if (window.zakkiThemeReady) return;
+  window.zakkiThemeReady = true;
+  const root = document.documentElement;
+  const storageKey = "zakki-theme";
+  const setTheme = (theme) => {
+    root.dataset.zakkiTheme = theme;
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {}
+  };
+  window.zakkiToggleTheme = () => {
+    setTheme(root.dataset.zakkiTheme === "light" ? "dark" : "light");
+  };
+  let savedTheme = "dark";
+  try {
+    savedTheme = localStorage.getItem(storageKey) || "dark";
+  } catch {}
+  setTheme(savedTheme === "light" ? "light" : "dark");
+})();
+</script>
 
 </div>
 
